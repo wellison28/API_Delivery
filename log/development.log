@@ -2310,3 +2310,97 @@ Processing by Api::ShipmentsController#nearby_truckers as */*
 Completed 200 OK in 14ms (Views: 10.3ms | ActiveRecord: 0.9ms)
 
 
+  [1m[35m (114.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (86.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6643483464595264770)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOrigins (20171002165026)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (89.3ms)[0m  [1m[35mCREATE TABLE "origins" ("id" bigserial primary key, "city" character varying, "state" character varying, "load_at" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171002165026"]]
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDestinations (20171002165136)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (77.9ms)[0m  [1m[35mCREATE TABLE "destinations" ("id" bigserial primary key, "city" character varying, "state" character varying, "deliver_at" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171002165136"]]
+  [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateContacts (20171002165209)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (100.8ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" bigserial primary key, "name" character varying, "phone" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171002165209"]]
+  [1m[35m (18.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateVehicles (20171002165833)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (91.0ms)[0m  [1m[35mCREATE TABLE "vehicles" ("id" bigserial primary key, "vtype" character varying, "body_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171002165833"]]
+  [1m[35m (16.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateShipments (20171002170216)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (54.0ms)[0m  [1m[35mCREATE TABLE "shipments" ("id" bigserial primary key, "value" float, "weight_kg" integer, "contact_id" bigint, "origin_id" bigint, "destination_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_ee87040884"
+FOREIGN KEY ("contact_id")
+  REFERENCES "contacts" ("id")
+, CONSTRAINT "fk_rails_442bb5bf3f"
+FOREIGN KEY ("origin_id")
+  REFERENCES "origins" ("id")
+, CONSTRAINT "fk_rails_8d51be1d52"
+FOREIGN KEY ("destination_id")
+  REFERENCES "destinations" ("id")
+)[0m
+  [1m[35m (44.2ms)[0m  [1m[35mCREATE  INDEX  "index_shipments_on_contact_id" ON "shipments"  ("contact_id")[0m
+  [1m[35m (31.3ms)[0m  [1m[35mCREATE  INDEX  "index_shipments_on_origin_id" ON "shipments"  ("origin_id")[0m
+  [1m[35m (42.8ms)[0m  [1m[35mCREATE  INDEX  "index_shipments_on_destination_id" ON "shipments"  ("destination_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171002170216"]]
+  [1m[35m (15.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateShipmentVehicles (20171002170301)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (105.8ms)[0m  [1m[35mCREATE TABLE "shipment_vehicles" ("id" bigserial primary key, "vtype" character varying, "body_type" character varying, "shipment_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_0d68f0390b"
+FOREIGN KEY ("shipment_id")
+  REFERENCES "shipments" ("id")
+)[0m
+  [1m[35m (31.0ms)[0m  [1m[35mCREATE  INDEX  "index_shipment_vehicles_on_shipment_id" ON "shipment_vehicles"  ("shipment_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171002170301"]]
+  [1m[35m (16.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTruckers (20171002170506)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (482.2ms)[0m  [1m[35mCREATE TABLE "truckers" ("id" bigserial primary key, "name" character varying, "phone" character varying, "last_city" character varying, "last_state" character varying, "vehicle_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_23f6fdedff"
+FOREIGN KEY ("vehicle_id")
+  REFERENCES "vehicles" ("id")
+)[0m
+  [1m[35m (33.6ms)[0m  [1m[35mCREATE  INDEX  "index_truckers_on_vehicle_id" ON "truckers"  ("vehicle_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171002170506"]]
+  [1m[35m (11.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateApiPessoas (20171002182011)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (97.6ms)[0m  [1m[35mCREATE TABLE "api_pessoas" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171002182011"]]
+  [1m[35m (10.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-02 21:05:43.424491"], ["updated_at", "2017-10-02 21:05:43.424491"]]
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6643483464595264770)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-02 18:06:26 -0300
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11)5637-2817", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[36mVehicle Load (0.5ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."vtype" = $1 AND "vehicles"."body_type" = $2 LIMIT $3[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-02 21:06:26.387769"], ["updated_at", "2017-10-02 21:06:26.387769"]]
+  [1m[35m (11.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 861ms (Views: 0.3ms | ActiveRecord: 24.0ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-02 18:11:33 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11)5637-2817", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[36mVehicle Load (2.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."vtype" = $1 AND "vehicles"."body_type" = $2 LIMIT $3[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["LIMIT", 1]]
+  [1m[35m (4.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVehicle Load (0.5ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11)5637-2817"], ["vehicle_id", 1], ["created_at", "2017-10-02 21:11:43.780310"], ["updated_at", "2017-10-02 21:11:43.780310"]]
+  [1m[35m (20.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 78ms (Views: 0.3ms | ActiveRecord: 29.3ms)
+
+

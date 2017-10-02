@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20171002182011) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "api_pessoas", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 20171002182011) do
   create_table "shipment_vehicles", force: :cascade do |t|
     t.string "vtype"
     t.string "body_type"
-    t.integer "shipment_id"
+    t.bigint "shipment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shipment_id"], name: "index_shipment_vehicles_on_shipment_id"
@@ -53,9 +56,9 @@ ActiveRecord::Schema.define(version: 20171002182011) do
   create_table "shipments", force: :cascade do |t|
     t.float "value"
     t.integer "weight_kg"
-    t.integer "contact_id"
-    t.integer "origin_id"
-    t.integer "destination_id"
+    t.bigint "contact_id"
+    t.bigint "origin_id"
+    t.bigint "destination_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_shipments_on_contact_id"
@@ -68,7 +71,7 @@ ActiveRecord::Schema.define(version: 20171002182011) do
     t.string "phone"
     t.string "last_city"
     t.string "last_state"
-    t.integer "vehicle_id"
+    t.bigint "vehicle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["vehicle_id"], name: "index_truckers_on_vehicle_id"
@@ -81,4 +84,9 @@ ActiveRecord::Schema.define(version: 20171002182011) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "shipment_vehicles", "shipments"
+  add_foreign_key "shipments", "contacts"
+  add_foreign_key "shipments", "destinations"
+  add_foreign_key "shipments", "origins"
+  add_foreign_key "truckers", "vehicles"
 end

@@ -20,7 +20,7 @@ class TruckersController < ApplicationController
 
 		trucker[:vehicle] = resp
 		
-		@trucker = Trucker.new(trucker)
+		@trucker = Trucker.new(name: trucker[:name], phone: trucker[:phone], vehicle_id: id)
 
 	    if @trucker.save
 	      render status: :created#, location: @trucker, content_type: "application/json"
