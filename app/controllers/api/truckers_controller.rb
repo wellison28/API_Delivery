@@ -28,5 +28,18 @@ class TruckersController < ApplicationController
 	      render json: @trucker.errors, status: :unprocessable_entity
 	    end
 	end
+
+	def last_location
+		trucker = Trucker.find(params[:id])
+		location = params.require(:location).permit(:city, :state)
+		trucker.last_city = location[:city]
+		trucker.last_state = location[:state]
+		trucker.save
+	end
+
+	def index
+		@trucker = Trucker.all
+		render json: @trucker
+	end
 end
 end
