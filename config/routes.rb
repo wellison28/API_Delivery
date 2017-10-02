@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-
-namespace 'api' do
-	resources :shipments
-	resources :truckers
-end
-
+  namespace 'api' do
+  		resources :truckers
+  end
 end
