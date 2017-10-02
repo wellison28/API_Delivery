@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: 
+  weight_kg: 1
+  contact: one
+  origin: one
+  destination: one
+
+two:
+  value: 
+  weight_kg: 1
+  contact: two
+  origin: two
+  destination: two

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vtype: MyString
+  body_type: MyString
+  shipment: one
+
+two:
+  vtype: MyString
+  body_type: MyString
+  shipment: two
