@@ -45,7 +45,7 @@ class ShipmentsController < ApplicationController
 		end
 		
 		#render status: :created, location: @shipment, content_type: "application/json"
-		render status: :created #content_type: "application/json"
+		render status: :created#, content_type: "application/json"
 
 	end
 

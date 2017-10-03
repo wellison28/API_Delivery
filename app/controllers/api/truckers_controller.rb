@@ -9,13 +9,10 @@ class TruckersController < ApplicationController
 		resp = Vehicle.find_by(vtype: vehicle[:type], body_type: vehicle[:body_type])
 		if resp		
 			id = resp.id
-			p "Usou o velho"
 		else
 			novo = Vehicle.new(vtype: vehicle[:type], body_type: vehicle[:body_type])
 			novo.save
 			id = novo.id
-
-			p "Criou novo"
 		end
 
 		trucker[:vehicle] = resp
@@ -23,7 +20,7 @@ class TruckersController < ApplicationController
 		@trucker = Trucker.new(name: trucker[:name], phone: trucker[:phone], vehicle_id: id)
 
 	    if @trucker.save
-	      render status: :created#, location: @trucker, content_type: "application/json"
+	      render status: :created, content_type: "application/json"#, location: @trucker, content_type: "application/json"
 	    else
 	      render json: @trucker.errors, status: :unprocessable_entity
 	    end
