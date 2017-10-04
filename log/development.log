@@ -4483,3 +4483,280 @@ Processing by Api::TruckersController#create as */*
 Completed 422 Unprocessable Entity in 106ms (Views: 0.2ms | ActiveRecord: 101.1ms)
 
 
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:23:25 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"sdas", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"asdad", "body_type"=>"sdasd"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "asdad"], ["body_type", "sdasd"], ["created_at", "2017-10-04 11:23:26.022722"], ["updated_at", "2017-10-04 11:23:26.022722"]]
+  [1m[35m (44.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "sdas"], ["phone", "(11)5w37-2817"], ["vehicle_id", 11], ["created_at", "2017-10-04 11:23:26.084774"], ["updated_at", "2017-10-04 11:23:26.084774"]]
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered TruckerSerializer with ActiveModelSerializers::Adapter::Attributes (0.19ms)
+Completed 201 Created in 154ms (Views: 72.1ms | ActiveRecord: 56.0ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:24:59 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"sdas", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"asdad", "body_type"=>"sdasd"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "asdad"], ["body_type", "sdasd"], ["created_at", "2017-10-04 11:25:09.504478"], ["updated_at", "2017-10-04 11:25:09.504478"]]
+  [1m[35m (30.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "sdas"], ["phone", "(11)5w37-2817"], ["vehicle_id", 12], ["created_at", "2017-10-04 11:25:09.545617"], ["updated_at", "2017-10-04 11:25:09.545617"]]
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered TruckerSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 201 Created in 67ms (Views: 5.0ms | ActiveRecord: 44.0ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:26:18 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"sdas", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"asdad", "body_type"=>"sdasd"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "asdad"], ["body_type", "sdasd"], ["created_at", "2017-10-04 11:26:18.135178"], ["updated_at", "2017-10-04 11:26:18.135178"]]
+  [1m[35m (94.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "sdas"], ["phone", "(11)5w37-2817"], ["vehicle_id", 13], ["created_at", "2017-10-04 11:26:18.250013"], ["updated_at", "2017-10-04 11:26:18.250013"]]
+  [1m[35m (34.9ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered TruckerSerializer with ActiveModelSerializers::Adapter::Attributes (7.24ms)
+Completed 201 Created in 214ms (Views: 50.9ms | ActiveRecord: 130.1ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:27:52 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"sdas", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"asdad", "body_type"=>"sdasd"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "asdad"], ["body_type", "sdasd"], ["created_at", "2017-10-04 11:27:53.052048"], ["updated_at", "2017-10-04 11:27:53.052048"]]
+  [1m[35m (687.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "sdas"], ["phone", "(11)5w37-2817"], ["vehicle_id", 14], ["created_at", "2017-10-04 11:27:53.755417"], ["updated_at", "2017-10-04 11:27:53.755417"]]
+  [1m[35m (27.8ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered TruckerSerializer with ActiveModelSerializers::Adapter::Attributes (37.74ms)
+Completed 500 Internal Server Error in 802ms (ActiveRecord: 722.1ms)
+
+
+  
+NoMethodError (undefined method `atributes' for VehicleSerializer:Class
+Did you mean?  attribute
+               attributes
+               _attributes):
+  
+app/serializers/vehicle_serializer.rb:5:in `<class:VehicleSerializer>'
+app/serializers/vehicle_serializer.rb:1:in `<top (required)>'
+app/controllers/api/truckers_controller.rb:15:in `create'
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:28:07 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"sdas", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"asdad", "body_type"=>"sdasd"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "asdad"], ["body_type", "sdasd"], ["created_at", "2017-10-04 11:28:17.346405"], ["updated_at", "2017-10-04 11:28:17.346405"]]
+  [1m[35m (26.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "sdas"], ["phone", "(11)5w37-2817"], ["vehicle_id", 15], ["created_at", "2017-10-04 11:28:17.383717"], ["updated_at", "2017-10-04 11:28:17.383717"]]
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered TruckerSerializer with ActiveModelSerializers::Adapter::Attributes (4.38ms)
+Completed 201 Created in 69ms (Views: 9.8ms | ActiveRecord: 39.1ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 08:29:37 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 11:29:38.091147"], ["updated_at", "2017-10-04 11:29:38.091147"]]
+  [1m[35m (23.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 11:29:38.127570"], ["updated_at", "2017-10-04 11:29:38.127570"]]
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 11:29:38.150936"], ["updated_at", "2017-10-04 11:29:38.150936"]]
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 9], ["origin_id", 41], ["destination_id", 50], ["created_at", "2017-10-04 11:29:38.179692"], ["updated_at", "2017-10-04 11:29:38.179692"]]
+  [1m[35m (11.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["shipment_id", 25], ["created_at", "2017-10-04 11:29:38.204858"], ["updated_at", "2017-10-04 11:29:38.204858"]]
+  [1m[35m (9.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "kombi"], ["body_type", "pequena"], ["shipment_id", 25], ["created_at", "2017-10-04 11:29:38.216807"], ["updated_at", "2017-10-04 11:29:38.216807"]]
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Attributes (11.07ms)
+Completed 500 Internal Server Error in 179ms (ActiveRecord: 86.3ms)
+
+
+  
+NoMethodError (undefined method `weight_tg' for #<Shipment:0x0056442eb08c68>
+Did you mean?  weight_kg
+               weight_kg?
+               weight_kg=):
+  
+app/controllers/api/shipments_controller.rb:36:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 08:29:49 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 11:29:59.726032"], ["updated_at", "2017-10-04 11:29:59.726032"]]
+  [1m[35m (34.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 11:29:59.770853"], ["updated_at", "2017-10-04 11:29:59.770853"]]
+  [1m[35m (12.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 11:29:59.793454"], ["updated_at", "2017-10-04 11:29:59.793454"]]
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 10], ["origin_id", 42], ["destination_id", 51], ["created_at", "2017-10-04 11:29:59.822738"], ["updated_at", "2017-10-04 11:29:59.822738"]]
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["shipment_id", 26], ["created_at", "2017-10-04 11:29:59.837822"], ["updated_at", "2017-10-04 11:29:59.837822"]]
+  [1m[35m (12.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "kombi"], ["body_type", "pequena"], ["shipment_id", 26], ["created_at", "2017-10-04 11:29:59.853149"], ["updated_at", "2017-10-04 11:29:59.853149"]]
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 26]]
+[active_model_serializers] No serializer found for resource: #<ShipmentVehicle id: 19, vtype: "Carrinho", body_type: "grande", shipment_id: 26, created_at: "2017-10-04 11:29:59", updated_at: "2017-10-04 11:29:59">
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Attributes (31.72ms)
+Completed 201 Created in 181ms (Views: 35.1ms | ActiveRecord: 87.2ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 08:31:00 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 11:31:00.600943"], ["updated_at", "2017-10-04 11:31:00.600943"]]
+  [1m[35m (60.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 11:31:00.670267"], ["updated_at", "2017-10-04 11:31:00.670267"]]
+  [1m[35m (47.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 11:31:00.729783"], ["updated_at", "2017-10-04 11:31:00.729783"]]
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 11], ["origin_id", 43], ["destination_id", 52], ["created_at", "2017-10-04 11:31:00.748881"], ["updated_at", "2017-10-04 11:31:00.748881"]]
+  [1m[35m (11.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["shipment_id", 27], ["created_at", "2017-10-04 11:31:00.771180"], ["updated_at", "2017-10-04 11:31:00.771180"]]
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "kombi"], ["body_type", "pequena"], ["shipment_id", 27], ["created_at", "2017-10-04 11:31:00.785124"], ["updated_at", "2017-10-04 11:31:00.785124"]]
+  [1m[35m (8.9ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 27]]
+[active_model_serializers] No serializer found for resource: #<ShipmentVehicle id: 21, vtype: "Carrinho", body_type: "grande", shipment_id: 27, created_at: "2017-10-04 11:31:00", updated_at: "2017-10-04 11:31:00">
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Attributes (16.3ms)
+Completed 201 Created in 239ms (Views: 21.7ms | ActiveRecord: 152.4ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 08:32:00 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 11:32:00.984729"], ["updated_at", "2017-10-04 11:32:00.984729"]]
+  [1m[35m (19.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 11:32:01.019292"], ["updated_at", "2017-10-04 11:32:01.019292"]]
+  [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 11:32:01.042735"], ["updated_at", "2017-10-04 11:32:01.042735"]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 12], ["origin_id", 44], ["destination_id", 53], ["created_at", "2017-10-04 11:32:01.068390"], ["updated_at", "2017-10-04 11:32:01.068390"]]
+  [1m[35m (12.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["shipment_id", 28], ["created_at", "2017-10-04 11:32:01.096067"], ["updated_at", "2017-10-04 11:32:01.096067"]]
+  [1m[35m (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "kombi"], ["body_type", "pequena"], ["shipment_id", 28], ["created_at", "2017-10-04 11:32:01.108433"], ["updated_at", "2017-10-04 11:32:01.108433"]]
+  [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 28]]
+[active_model_serializers] No serializer found for resource: #<ShipmentVehicle id: 23, vtype: "Carrinho", body_type: "grande", shipment_id: 28, created_at: "2017-10-04 11:32:01", updated_at: "2017-10-04 11:32:01">
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Attributes (35.03ms)
+Completed 201 Created in 196ms (Views: 49.7ms | ActiveRecord: 82.5ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 08:34:09 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 11:34:09.579015"], ["updated_at", "2017-10-04 11:34:09.579015"]]
+  [1m[35m (12.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 11:34:09.608303"], ["updated_at", "2017-10-04 11:34:09.608303"]]
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 11:34:09.626330"], ["updated_at", "2017-10-04 11:34:09.626330"]]
+  [1m[35m (9.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 13], ["origin_id", 45], ["destination_id", 54], ["created_at", "2017-10-04 11:34:09.656525"], ["updated_at", "2017-10-04 11:34:09.656525"]]
+  [1m[35m (56.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["shipment_id", 29], ["created_at", "2017-10-04 11:34:09.727357"], ["updated_at", "2017-10-04 11:34:09.727357"]]
+  [1m[35m (41.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "kombi"], ["body_type", "pequena"], ["shipment_id", 29], ["created_at", "2017-10-04 11:34:09.771979"], ["updated_at", "2017-10-04 11:34:09.771979"]]
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.8ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 29]]
+[active_model_serializers] No serializer found for resource: #<ShipmentVehicle id: 25, vtype: "Carrinho", body_type: "grande", shipment_id: 29, created_at: "2017-10-04 11:34:09", updated_at: "2017-10-04 11:34:09">
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Attributes (29.67ms)
+Completed 201 Created in 261ms (Views: 43.5ms | ActiveRecord: 153.8ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 08:35:30 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 11:35:30.749711"], ["updated_at", "2017-10-04 11:35:30.749711"]]
+  [1m[35m (13.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 11:35:30.779455"], ["updated_at", "2017-10-04 11:35:30.779455"]]
+  [1m[35m (50.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 11:35:30.844029"], ["updated_at", "2017-10-04 11:35:30.844029"]]
+  [1m[35m (41.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 14], ["origin_id", 46], ["destination_id", 55], ["created_at", "2017-10-04 11:35:30.906472"], ["updated_at", "2017-10-04 11:35:30.906472"]]
+  [1m[35m (11.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["shipment_id", 30], ["created_at", "2017-10-04 11:35:30.931618"], ["updated_at", "2017-10-04 11:35:30.931618"]]
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "kombi"], ["body_type", "pequena"], ["shipment_id", 30], ["created_at", "2017-10-04 11:35:30.943146"], ["updated_at", "2017-10-04 11:35:30.943146"]]
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 30]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Attributes (22.95ms)
+Completed 500 Internal Server Error in 261ms (ActiveRecord: 153.2ms)
+
+
+  
+NoMethodError (undefined method `vehicle' for #<ShipmentVehicle:0x005637c3311068>):
+  
+app/controllers/api/shipments_controller.rb:36:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 08:37:10 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 11:37:11.192639"], ["updated_at", "2017-10-04 11:37:11.192639"]]
+  [1m[35m (12.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 11:37:11.220443"], ["updated_at", "2017-10-04 11:37:11.220443"]]
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 11:37:11.240365"], ["updated_at", "2017-10-04 11:37:11.240365"]]
+  [1m[35m (9.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 15], ["origin_id", 47], ["destination_id", 56], ["created_at", "2017-10-04 11:37:11.271022"], ["updated_at", "2017-10-04 11:37:11.271022"]]
+  [1m[35m (44.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["shipment_id", 31], ["created_at", "2017-10-04 11:37:11.331492"], ["updated_at", "2017-10-04 11:37:11.331492"]]
+  [1m[35m (41.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "kombi"], ["body_type", "pequena"], ["shipment_id", 31], ["created_at", "2017-10-04 11:37:11.377539"], ["updated_at", "2017-10-04 11:37:11.377539"]]
+  [1m[35m (16.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 31]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Attributes (24.18ms)
+Completed 201 Created in 256ms (Views: 38.5ms | ActiveRecord: 152.7ms)
+
+
