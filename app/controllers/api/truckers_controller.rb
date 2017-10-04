@@ -12,7 +12,7 @@ class TruckersController < ApplicationController
 							   phone: trucker_params[:phone],
 							   vehicle: @vehicle)
 		if @trucker.save
-			render json: @trucker, status: :created, location: [:api, @trucker]
+			render status: :created, location: [:api, @trucker]
 		else
 			@vehicle.destroy
 			render json: @trucker.errors, status: :unprocessable_entity
