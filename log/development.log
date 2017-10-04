@@ -4385,3 +4385,101 @@ Processing by Api::ShipmentsController#create as */*
 Completed 201 Created in 276ms (Views: 0.5ms | ActiveRecord: 223.1ms)
 
 
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:09:01 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Wellison", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"sasa", "body_type"=>"sdasd"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 391ms (Views: 0.2ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:09:57 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Wellison", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"sasa", "body_type"=>"sdasd"}}}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: shipment):
+  
+app/controllers/api/truckers_controller.rb:22:in `shipment_params'
+app/controllers/api/truckers_controller.rb:6:in `create'
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:11:30 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Wellison", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"sasa", "body_type"=>"sdasd"}}}
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 4.9ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'type' for Vehicle.):
+  
+app/controllers/api/truckers_controller.rb:6:in `create'
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:13:31 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Wellison", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"sasa", "body_type"=>"sdasd"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (65.2ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "sasa"], ["body_type", "sdasd"], ["created_at", "2017-10-04 11:13:31.443132"], ["updated_at", "2017-10-04 11:13:31.443132"]]
+  [1m[35m (21.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (92.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)5w37-2817"], ["vehicle_id", 7], ["created_at", "2017-10-04 11:13:31.555712"], ["updated_at", "2017-10-04 11:13:31.555712"]]
+  [1m[35m (16.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 280ms (ActiveRecord: 199.4ms)
+
+
+  
+NoMethodError (undefined method `trucker_url' for #<Api::TruckersController:0x007f89980a09c8>
+Did you mean?  trucker_params):
+  
+app/controllers/api/truckers_controller.rb:14:in `create'
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:16:50 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Wellison", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"sasa", "body_type"=>"sdasd"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "sasa"], ["body_type", "sdasd"], ["created_at", "2017-10-04 11:16:50.570785"], ["updated_at", "2017-10-04 11:16:50.570785"]]
+  [1m[35m (35.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)5w37-2817"], ["vehicle_id", 8], ["created_at", "2017-10-04 11:16:50.615821"], ["updated_at", "2017-10-04 11:16:50.615821"]]
+  [1m[35m (48.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 148ms (ActiveRecord: 85.0ms)
+
+
+  
+NoMethodError (undefined method `trucker_url' for #<Api::TruckersController:0x007f89942cf1f8>
+Did you mean?  trucker_params):
+  
+app/controllers/api/truckers_controller.rb:15:in `create'
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:18:32 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Wellison", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"sasa", "body_type"=>"sdasd"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "sasa"], ["body_type", "sdasd"], ["created_at", "2017-10-04 11:18:32.092549"], ["updated_at", "2017-10-04 11:18:32.092549"]]
+  [1m[35m (30.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)5w37-2817"], ["vehicle_id", 9], ["created_at", "2017-10-04 11:18:32.131993"], ["updated_at", "2017-10-04 11:18:32.131993"]]
+  [1m[35m (46.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 138ms (Views: 37.9ms | ActiveRecord: 77.8ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:18:54 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Wellison", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"", "body_type"=>"sdasd"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-04 08:19:19 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"", "phone"=>"(11)5w37-2817", "vehicle"=>{"type"=>"asdad", "body_type"=>"sdasd"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "asdad"], ["body_type", "sdasd"], ["created_at", "2017-10-04 11:19:19.298493"], ["updated_at", "2017-10-04 11:19:19.298493"]]
+  [1m[35m (32.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "vehicles" WHERE "vehicles"."id" = $1[0m  [["id", 10]]
+  [1m[35m (67.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 106ms (Views: 0.2ms | ActiveRecord: 101.1ms)
+
+
