@@ -1,56 +1,66 @@
 module Api
 class ShipmentsController < ApplicationController
-		def create
-		parametros = params.require(:shipment).permit(:value, 
-													  :weight_kg, 
-													 {:contact => [:name, :phone]},
-													 {:vehicles => [:type, :body_type]},
-													 {:origin => [:city, :state, :load_at]},
-													 {:destination => [:city, :state, :deliver_at]})	
-		contact = parametros[:contact]
-		vehicles = parametros[:vehicles]
-		vv = parametros[:vehicles]
-		origin = parametros[:origin]
-		destination = parametros[:destination]
+			
+def create
+		origin = shipment_params[:origin]
+		destination = shipment_params[:destination]
+		contact = shipment_params[:contact]
+		vehicles = shipment_params[:vehicles]
 
-		#insere id de contato
-		result = Contact.find_by(phone: contact[:phone])
-		if result
-			contact_id = result.id
+		@origin = Origin.new(origin)
+		if @origin.save
+			@destination = Destination.new(destination)
+			if @destination.save
+				@contact = Contact.new(contact)
+				if @contact.save
+					@shipment = Shipment.new(value: shipment_params[:value],
+											 weight_kg: shipment_params[:weight_kg],
+											 contact: @contact,
+											 origin: @origin,
+											 destination: @destination)
+					if @shipment.save
+						for i in 0..(vehicles.count - 1)
+							@vehicle = ShipmentVehicle.new(shipment: @shipment,
+												   vtype: vehicles[i][:type],
+												   body_type: vehicles[i][:body_type])
+							if !@vehicle.save
+								@shipment.destroy
+								@contact.destroy
+								@destination.destroy
+								@origin.destroy	
+								erro = true								
+								break
+							end
+						end	
+						if !erro
+							render json: @shipment, status: :created#, location: @shipment
+						else
+							render json:@vehicle.errors, status: :unprocessable_entity	
+						end	
+					else
+						@contact.destroy
+						@destination.destroy
+						@origin.destroy
+						render json:@shipment.errors, status: :unprocessable_entity	
+					end
+				else
+					@destination.destroy
+					@origin.destroy
+					render json:@contact.errors, status: :unprocessable_entity
+				end	
+			else
+				@origin.destroy
+				render json:@destination.errors, status: :unprocessable_entity
+			end
 		else
-			c = Contact.new(name: contact[:name], phone: contact[:phone])
-			c.save
-			contact_id = c.id
+			render json:@origin.errors, status: :unprocessable_entity
 		end
-		
-		origin_id = Origin.create(origin).id
-		destination_id = Destination.create(destination).id
-
-		@shipment = Shipment.create(value: parametros[:value],
-				weight_kg: parametros[:weight_kg],
-				contact_id: contact_id,
-				origin_id: origin_id,
-				destination_id: destination_id)
-
-		shipment_id = @shipment.id
-
-		for i in 0..vehicles.count-1
-			# result = Vehicle.find_by(vtype: vehicles[i][:type], body_type: vehicles[i][:body_type])
-			# if result
-			# 	vehicle_id = result.id
-			# else
-			# 	vehicle_id = Vehicle.create(vtype: vehicles[i][:type], body_type: vehicles[i][:body_type]).id
-			# end
-			ShipmentVehicle.create(shipment_id: shipment_id, vtype: vehicles[i][:type], body_type: vehicles[i][:body_type])
-		end
-		
-		#render status: :created, location: @shipment, content_type: "application/json"
-		render status: :created#, content_type: "application/json"
-
 	end
 
-	#exibe determinada remessa
-	#get /shipments/:id
+  	def shipment_params
+		params.require(:shipment).permit!
+	end
+
 	def show
 		@ship = Shipment.find(params[:id])
 		vehicles = Vehicle.all

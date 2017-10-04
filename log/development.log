@@ -4008,3 +4008,380 @@ Processing by Api::TruckersController#create as */*
 Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms)
 
 
+Started POST "/shipments" for 127.0.0.1 at 2017-10-03 23:14:07 -0300
+  [1m[35m (23.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/shipments"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-03 23:14:35 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[36mContact Load (52.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."phone" = $1 LIMIT $2[0m  [["phone", "(11) 98268-4321"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 02:14:35.615900"], ["updated_at", "2017-10-04 02:14:35.615900"]]
+  [1m[35m (13.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 02:14:35.648744"], ["updated_at", "2017-10-04 02:14:35.648744"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Load (0.7ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 201 Created in 847ms (Views: 0.1ms | ActiveRecord: 193.2ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-03 23:17:22 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[36mContact Load (0.7ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."phone" = $1 LIMIT $2[0m  [["phone", "(11) 98268-4321"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 02:17:23.134650"], ["updated_at", "2017-10-04 02:17:23.134650"]]
+  [1m[35m (38.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 02:17:23.185973"], ["updated_at", "2017-10-04 02:17:23.185973"]]
+  [1m[35m (43.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 201 Created in 532ms (Views: 0.1ms | ActiveRecord: 101.1ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-03 23:18:31 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."phone" = $1 LIMIT $2[0m  [["phone", "(11) 98268-4321"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 02:18:41.997656"], ["updated_at", "2017-10-04 02:18:41.997656"]]
+  [1m[35m (344.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 02:18:42.350427"], ["updated_at", "2017-10-04 02:18:42.350427"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 201 Created in 408ms (Views: 0.1ms | ActiveRecord: 349.7ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-03 23:21:21 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 02:21:21.838613"], ["updated_at", "2017-10-04 02:21:21.838613"]]
+  [1m[35m (47.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 02:21:21.898538"], ["updated_at", "2017-10-04 02:21:21.898538"]]
+  [1m[35m (54.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.2ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 02:21:21.964832"], ["updated_at", "2017-10-04 02:21:21.964832"]]
+  [1m[35m (23.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (107.2ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 2]]
+  [1m[35m (20.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "destinations" WHERE "destinations"."id" = $1[0m  [["id", 43]]
+  [1m[35m (9.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "origins" WHERE "origins"."id" = $1[0m  [["id", 34]]
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 709ms (Views: 0.3ms | ActiveRecord: 297.7ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-03 23:23:02 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/shipments_controller.rb:5:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-03 23:26:28 -0300
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-03 23:26:28 -0300
+Processing by Api::ShipmentsController#create as */*
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 02:26:28.984613"], ["updated_at", "2017-10-04 02:26:28.984613"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 02:26:28.985859"], ["updated_at", "2017-10-04 02:26:28.985859"]]
+  [1m[35m (31.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (42.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 02:26:29.028906"], ["updated_at", "2017-10-04 02:26:29.028906"]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 02:26:29.031273"], ["updated_at", "2017-10-04 02:26:29.031273"]]
+  [1m[35m (9.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 02:26:29.050717"], ["updated_at", "2017-10-04 02:26:29.050717"]]
+  [1m[35m (19.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 02:26:29.053178"], ["updated_at", "2017-10-04 02:26:29.053178"]]
+  [1m[35m (10.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (27.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 4]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "destinations" WHERE "destinations"."id" = $1[0m  [["id", 44]]
+  [1m[35m (14.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "destinations" WHERE "destinations"."id" = $1[0m  [["id", 45]]
+  [1m[35m (20.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "origins" WHERE "origins"."id" = $1[0m  [["id", 35]]
+  [1m[35m (18.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "origins" WHERE "origins"."id" = $1[0m  [["id", 36]]
+  [1m[35m (20.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 169ms (Views: 0.2ms | ActiveRecord: 118.0ms)
+
+
+  [1m[35m (20.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 179ms (Views: 0.2ms | ActiveRecord: 155.7ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-03 23:26:39 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 02:26:39.805653"], ["updated_at", "2017-10-04 02:26:39.805653"]]
+  [1m[35m (25.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 02:26:39.845507"], ["updated_at", "2017-10-04 02:26:39.845507"]]
+  [1m[35m (44.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 02:26:39.900916"], ["updated_at", "2017-10-04 02:26:39.900916"]]
+  [1m[35m (44.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 5]]
+  [1m[35m (52.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "destinations" WHERE "destinations"."id" = $1[0m  [["id", 46]]
+  [1m[35m (9.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "origins" WHERE "origins"."id" = $1[0m  [["id", 37]]
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 619ms (Views: 0.3ms | ActiveRecord: 201.8ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-03 23:27:17 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 02:27:27.748087"], ["updated_at", "2017-10-04 02:27:27.748087"]]
+  [1m[35m (345.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 02:27:28.102313"], ["updated_at", "2017-10-04 02:27:28.102313"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 02:27:28.115065"], ["updated_at", "2017-10-04 02:27:28.115065"]]
+  [1m[35m (12.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 6]]
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "destinations" WHERE "destinations"."id" = $1[0m  [["id", 47]]
+  [1m[35m (9.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "origins" WHERE "origins"."id" = $1[0m  [["id", 38]]
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 433ms (Views: 0.2ms | ActiveRecord: 389.7ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-03 23:29:14 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/shipments_controller.rb:5:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 07:53:08 -0300
+  [1m[35m (34.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/shipments_controller.rb:5:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 07:53:42 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/shipments_controller.rb:5:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 07:54:41 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Unpermitted parameters: :weight_kg, :contact, :vehicles, :origin, :destination
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/shipments_controller.rb:5:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 07:55:45 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/shipments_controller.rb:5:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 07:57:19 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/shipments_controller.rb:5:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 07:57:43 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/shipments_controller.rb:9:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 07:57:59 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/shipments_controller.rb:9:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 07:58:27 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/shipments_controller.rb:9:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 07:59:09 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (68.8ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 10:59:09.919011"], ["updated_at", "2017-10-04 10:59:09.919011"]]
+  [1m[35m (21.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (13.9ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 10:59:10.028216"], ["updated_at", "2017-10-04 10:59:10.028216"]]
+  [1m[35m (12.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (40.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 10:59:10.067728"], ["updated_at", "2017-10-04 10:59:10.067728"]]
+  [1m[35m (57.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (38.5ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 7]]
+  [1m[35m (16.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "destinations" WHERE "destinations"."id" = $1[0m  [["id", 48]]
+  [1m[35m (9.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "origins" WHERE "origins"."id" = $1[0m  [["id", 39]]
+  [1m[35m (9.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 422 Unprocessable Entity in 965ms (Views: 0.3ms | ActiveRecord: 376.0ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-04 07:59:57 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Leonoldo", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"AC", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "AC"], ["load_at", "2017-09-25"], ["created_at", "2017-10-04 10:59:57.345348"], ["updated_at", "2017-10-04 10:59:57.345348"]]
+  [1m[35m (20.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-04 10:59:57.375737"], ["updated_at", "2017-10-04 10:59:57.375737"]]
+  [1m[35m (49.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leonoldo"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-04 10:59:57.433148"], ["updated_at", "2017-10-04 10:59:57.433148"]]
+  [1m[35m (48.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (15.4ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 8], ["origin_id", 40], ["destination_id", 49], ["created_at", "2017-10-04 10:59:57.497180"], ["updated_at", "2017-10-04 10:59:57.497180"]]
+  [1m[35m (20.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (39.5ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["shipment_id", 24], ["created_at", "2017-10-04 10:59:57.543698"], ["updated_at", "2017-10-04 10:59:57.543698"]]
+  [1m[35m (17.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "kombi"], ["body_type", "pequena"], ["shipment_id", 24], ["created_at", "2017-10-04 10:59:57.602243"], ["updated_at", "2017-10-04 10:59:57.602243"]]
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 276ms (Views: 0.5ms | ActiveRecord: 223.1ms)
+
+

@@ -13,7 +13,6 @@ class Shipment < ApplicationRecord
   			:contact,
   			:origin,
   			:destination,
-  			:shipment_vehicles,
   			presence: { message: "Obrigatorio a inclusão" }
   # validates :value
   # validates :weight_kg
