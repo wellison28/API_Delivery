@@ -3,7 +3,7 @@
 https://api-delivery28.herokuapp.com/api
 
 <h2>Objetivo</h2>
-Gerenciamento de fretes, que permite a busca de motoritas localizados proximos de um determinado frete e a atualzação da localizacao do desses motoristas
+Gerenciamento de fretes, que permite a busca de motoritas localizados proximos de um determinado frete e a atualização da localizacao desses motoristas
 
 <h2>Aplicação</h2>
 Programada em Ruby 2.3.1, com Rails 5 e base de dados PostgreSQL.
