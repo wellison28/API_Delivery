@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002182011) do
+ActiveRecord::Schema.define(version: 20171005204150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(version: 20171002182011) do
   end
 
   create_table "shipment_vehicles", force: :cascade do |t|
-    t.string "vtype"
-    t.string "body_type"
     t.bigint "shipment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "vehicle_id"
     t.index ["shipment_id"], name: "index_shipment_vehicles_on_shipment_id"
+    t.index ["vehicle_id"], name: "index_shipment_vehicles_on_vehicle_id"
   end
 
   create_table "shipments", force: :cascade do |t|
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20171002182011) do
   end
 
   add_foreign_key "shipment_vehicles", "shipments"
+  add_foreign_key "shipment_vehicles", "vehicles"
   add_foreign_key "shipments", "contacts"
   add_foreign_key "shipments", "destinations"
   add_foreign_key "shipments", "origins"

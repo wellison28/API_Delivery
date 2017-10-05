@@ -5197,3 +5197,49 @@ Processing by Api::ShipmentsController#show as */*
 Completed 200 OK in 105ms (Views: 73.9ms | ActiveRecord: 19.0ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6643483464595264770)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AlterShipmentVehicle (20171005203159)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.1ms)[0m  [1m[35mALTER TABLE "shipment_vehicle" DROP "vtype"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6643483464595264770)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6643483464595264770)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AlterShipmentVehicle (20171005203159)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (149.1ms)[0m  [1m[35mALTER TABLE "shipment_vehicles" DROP "vtype"[0m
+  [1m[35m (8.1ms)[0m  [1m[35mALTER TABLE "shipment_vehicles" DROP "body_type"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6643483464595264770)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6643483464595264770)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AlterShipmentVehicle (20171005203159)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6643483464595264770)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6643483464595264770)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveShipmentVehicle (20171005203159)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6643483464595264770)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6643483464595264770)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVehicleToShipmentVehicles (20171005204000)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (35.6ms)[0m  [1m[35mALTER TABLE "shipment_vehicles" ADD "vehicle_id" bigint[0m
+  [1m[35m (83.9ms)[0m  [1m[35mCREATE  INDEX  "index_shipment_vehicles_on_vehicle_id" ON "shipment_vehicles"  ("vehicle_id")[0m
+  [1m[35m (170.5ms)[0m  [1m[35mALTER TABLE "shipment_vehicles" ADD CONSTRAINT "fk_rails_727808d37f"
+FOREIGN KEY ("vehicle_id")
+  REFERENCES "vehicles" ("id")
+[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171005204000"]]
+  [1m[35m (11.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveColumnsToShipmentVehicles (20171005204150)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "shipment_vehicles" DROP "vtype"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "shipment_vehicles" DROP "body_type"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171005204150"]]
+  [1m[35m (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (32.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6643483464595264770)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
