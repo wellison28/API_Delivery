@@ -1,7 +1,6 @@
 <h1>API Delivery<h1>
 
-
-<a>https://api-delivery28.herokuapp.com/api</a>
+https://api-delivery28.herokuapp.com/api
 
 <h2>Objetivo</h2>
 Gerenciamento de fretes, que permite a busca de motoritas localizados proximos de um determinado frete e a atualzação da localizacao do desses motoristas
