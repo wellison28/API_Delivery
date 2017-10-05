@@ -1,6 +1,6 @@
 <h1>API Delivery</h1>
 
-<p>https://api-delivery28.herokuapp.com/api</p>
+<p>https://api-delivery28.herokuapp.com/</p>
 
 <h2>Objetivo</h2>
 EndPoints que permite a criação, edicao e busca de fretes e motoristas. 
@@ -63,7 +63,7 @@ Testes
 ```
 > HTTP/1.1 201 Created
 > Location: /api/shipments/1
-
+<br>
 <h4>Retorna  shipment com determinado "id"</h4>
 
 > GET /api/shipments/1 HTTP/1.1
@@ -87,8 +87,7 @@ Testes
 ```
 > HTTP/1.1 200 OK
 > Content-Type: application/json; charset="utf-8"
-
-
+<br>
 <h4>Permite a gravação de motoristas</h4>
 
 > POST /api/truckers HTTP/1.1
@@ -106,7 +105,7 @@ Testes
 ```
 > HTTP/1.1 201 Created
 > Location: /api/truckers/1
-
+<br>
 <h4>Atualiza a localização de determinado motorista</h4>
 
 > PUT /api/truckers/1/last_location
@@ -120,7 +119,7 @@ Testes
 }
 ```
 > HTTP 204 No Content
-
+<br>
 
 <h4>Retorna uma lista de motoristas localizados na origem de determinada shipment</h4>
 
