@@ -33,7 +33,10 @@ def create
 							end
 						end	
 						if !erro
-							render status: :created, location: [:api, @shipment]
+							render status: :created, 
+								   location: [:api, @shipment],
+								   content_type: "application/json"
+
 						else
 							render json:@vehicle.errors, status: :unprocessable_entity	
 						end	

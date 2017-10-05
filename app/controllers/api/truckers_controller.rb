@@ -12,7 +12,9 @@ class TruckersController < ApplicationController
 							   phone: trucker_params[:phone],
 							   vehicle: @vehicle)
 		if @trucker.save
-			render status: :created, location: [:api, @trucker]
+			render status: :created, 
+			location: [:api, @trucker], 
+			content_type: "application/json"
 		else
 			@vehicle.destroy
 			render json: @trucker.errors, status: :unprocessable_entity
@@ -27,11 +29,16 @@ class TruckersController < ApplicationController
 	end
 
 	def last_location
-		trucker = Trucker.find(params[:id])
+		@trucker = Trucker.find(params[:id])
 		location = params.require(:location).permit(:city, :state)
-		trucker.last_city = location[:city]
-		trucker.last_state = location[:state]
-		trucker.save
+		@trucker.last_city = location[:city]
+		@trucker.last_state = location[:state]
+		if @trucker.save
+			render status: 204
+		else
+			@vehicle.destroy
+			render json: @trucker.errors, status: :unprocessable_entity
+		end
 	end
 
 	def index
