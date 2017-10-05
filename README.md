@@ -1,27 +1,29 @@
-# README
+<h1>API Delivery</h1><br>
+<a>https://api-delivery28.herokuapp.com/api</a>
 
-API Delivery
-Link: https://api-delivery28.herokuapp.com/api
+<h2>Objetivo</h2>
+Gerenciamento de fretes, que permite a busca de motoritas localizados proximos de um determinado frete e a atualzação da localizacao do desses motoristas
 
-A aplicação esta programada em Ruby 2.3.1, com Rails 5 e base de dados PostgreSQL.
+<h2>Aplicação</h2>
+Programada em Ruby 2.3.1, com Rails 5 e base de dados PostgreSQL.
 
-Para utilizar 
+<h2>Clone</h2>
 
-É necessario ter instalado o Ruby e op Rails nas versoes ditas acima
+É necessario ter instalado o Ruby e o Rails nas versoes ditas acima
 
 Apos fazer o clone do repositorio acessar o diretorio criado e executar os comandos abaixo:
 Instalacao das dependencias
-
+```
 bundle install
-
+```
 Criacao do banco de dados
-
-rake db:create
-
+```
+$ rake db:create
+```
 Execução das migrações
-
-rake db:migrate
-
+```
+$ rake db:migrate
+```
 Dependencias
 
 Serializador
@@ -37,7 +39,7 @@ Validações
 
 EndPoints
 
-GET /api/shipments/:id HTTP/1.1
+<>GET /api/shipments/:id HTTP/1.1
 Retorna dum Shipment com id especificado no formato abaixo:
 
 {
