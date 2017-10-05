@@ -1,6 +1,6 @@
 <h1>API Delivery<h1>
 
-https://api-delivery28.herokuapp.com/api
+<a>https://api-delivery28.herokuapp.com/api</a>
 
 <h2>Objetivo</h2>
 Gerenciamento de fretes, que permite a busca de motoritas localizados proximos de um determinado frete e a atualzação da localizacao do desses motoristas
@@ -38,7 +38,6 @@ Database
 Testes
 >gem 'rspec-rails', '~> 3.6'
 
-
 <h2>EndPoints</h2>
 
 <h4>Permite a criação de um novo shipment</h4>
@@ -71,7 +70,6 @@ Testes
 
 ```
 {
-    "id": 1,
     "shipment": {
         "value": 1500.0,
         "weight_kg": 2000,
