@@ -1,9 +1,9 @@
 <h1>API Delivery<h1>
 
-https://api-delivery28.herokuapp.com/api
+<p>https://api-delivery28.herokuapp.com/api</p>
 
 <h2>Objetivo</h2>
-Gerenciamento de fretes, que permite a busca de motoritas localizados proximos de um determinado frete e a atualização da localizacao desses motoristas
+EndPoints que permite a criação, edicao e busca de fretes e motoristas. 
 
 <h2>Aplicação</h2>
 Programada em Ruby 2.3.1, com Rails 5 e base de dados PostgreSQL.
@@ -16,7 +16,7 @@ Apos fazer o clone do repositorio acessar o diretorio criado e executar os coman
 
 - Instalacao das dependencias
 ```
-bundle install
+$ bundle install
 ```
 - Criacao do banco de dados
 ```
