@@ -13,8 +13,7 @@ module Api
 								   vehicle: @vehicle)
 			if @trucker.save
 				render status: :created, 
-				location: [:api, @trucker], 
-				content_type: "application/json"
+				location: [:api, @trucker]
 			else
 				@vehicle.destroy
 				render json: @trucker.errors, status: :unprocessable_entity
