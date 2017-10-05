@@ -9,6 +9,19 @@ Para utilizar
 
 É necessario ter instalado o Ruby e op Rails nas versoes ditas acima
 
+Apos fazer o clone do repositorio acessar o diretorio criado e executar os comandos abaixo:
+Instalacao das dependencias
+
+bundle install
+
+Criacao do banco de dados
+
+rake db:create
+
+Execução das migrações
+
+rake db:migrate
+
 Dependencias
 
 Serializador
@@ -20,17 +33,16 @@ gem 'pg', '~> 0.21.0'
 Testes
 gem 'rspec-rails', '~> 3.6'
 
+Validações 
 
-* Configuration
+EndPoints
 
-* Database creation
+GET /api/shipments/:id HTTP/1.1
+Retorna dum Shipment com id especificado no formato abaixo:
 
-* Database initialization
+{
 
-* How to run the test suite
+}
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+POST /api/truckers HTTP/1.1
+Efetua a gravação do
