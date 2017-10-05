@@ -1736,3 +1736,991 @@ Completed 201 Created in 28ms (Views: 0.3ms | ActiveRecord: 7.8ms)
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:12:19 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:12:19.616360"], ["updated_at", "2017-10-05 05:12:19.616360"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 26], ["created_at", "2017-10-05 05:12:19.619268"], ["updated_at", "2017-10-05 05:12:19.619268"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.2ms | ActiveRecord: 1.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:12:19.626688"], ["updated_at", "2017-10-05 05:12:19.626688"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 27], ["created_at", "2017-10-05 05:12:19.628819"], ["updated_at", "2017-10-05 05:12:19.628819"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/27/last_location" for 127.0.0.1 at 2017-10-05 02:12:19 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"27"}
+  [1m[36mTrucker Load (0.3ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:12:19.640406"], ["id", 27]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 11ms (Views: 0.1ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:12:19 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:15:07 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:15:07.515296"], ["updated_at", "2017-10-05 05:15:07.515296"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 28], ["created_at", "2017-10-05 05:15:07.517798"], ["updated_at", "2017-10-05 05:15:07.517798"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.1ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:15:07.524668"], ["updated_at", "2017-10-05 05:15:07.524668"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 29], ["created_at", "2017-10-05 05:15:07.526657"], ["updated_at", "2017-10-05 05:15:07.526657"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/29/last_location" for 127.0.0.1 at 2017-10-05 02:15:07 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"29"}
+  [1m[36mTrucker Load (0.2ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:15:07.537946"], ["id", 29]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 11ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:15:07 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:17:00 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:17:00.046911"], ["updated_at", "2017-10-05 05:17:00.046911"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 30], ["created_at", "2017-10-05 05:17:00.049796"], ["updated_at", "2017-10-05 05:17:00.049796"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.2ms | ActiveRecord: 1.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:17:00.057136"], ["updated_at", "2017-10-05 05:17:00.057136"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 31], ["created_at", "2017-10-05 05:17:00.059224"], ["updated_at", "2017-10-05 05:17:00.059224"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/31/last_location" for 127.0.0.1 at 2017-10-05 02:17:00 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"31"}
+  [1m[36mTrucker Load (0.3ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:17:00.070956"], ["id", 31]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 12ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:17:00 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:17:00.079744"], ["updated_at", "2017-10-05 05:17:00.079744"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:17:00.082727"], ["updated_at", "2017-10-05 05:17:00.082727"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:17:00.086090"], ["updated_at", "2017-10-05 05:17:00.086090"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 3], ["origin_id", 3], ["destination_id", 3], ["created_at", "2017-10-05 05:17:00.088861"], ["updated_at", "2017-10-05 05:17:00.088861"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["shipment_id", 3], ["created_at", "2017-10-05 05:17:00.102690"], ["updated_at", "2017-10-05 05:17:00.102690"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["shipment_id", 3], ["created_at", "2017-10-05 05:17:00.105640"], ["updated_at", "2017-10-05 05:17:00.105640"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 29ms (Views: 0.3ms | ActiveRecord: 7.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:25:20 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:25:20.064761"], ["updated_at", "2017-10-05 05:25:20.064761"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 32], ["created_at", "2017-10-05 05:25:20.067658"], ["updated_at", "2017-10-05 05:25:20.067658"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.2ms | ActiveRecord: 1.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:25:20.074928"], ["updated_at", "2017-10-05 05:25:20.074928"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 33], ["created_at", "2017-10-05 05:25:20.077198"], ["updated_at", "2017-10-05 05:25:20.077198"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/33/last_location" for 127.0.0.1 at 2017-10-05 02:25:20 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"33"}
+  [1m[36mTrucker Load (0.2ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:25:20.088714"], ["id", 33]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 11ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:25:20 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:25:20.097254"], ["updated_at", "2017-10-05 05:25:20.097254"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:25:20.099843"], ["updated_at", "2017-10-05 05:25:20.099843"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:25:20.103211"], ["updated_at", "2017-10-05 05:25:20.103211"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 4], ["origin_id", 4], ["destination_id", 4], ["created_at", "2017-10-05 05:25:20.106014"], ["updated_at", "2017-10-05 05:25:20.106014"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["shipment_id", 4], ["created_at", "2017-10-05 05:25:20.119099"], ["updated_at", "2017-10-05 05:25:20.119099"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["shipment_id", 4], ["created_at", "2017-10-05 05:25:20.121909"], ["updated_at", "2017-10-05 05:25:20.121909"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 28ms (Views: 0.4ms | ActiveRecord: 7.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/api/shipments/1" for 127.0.0.1 at 2017-10-05 02:25:20 -0300
+Processing by Api::ShipmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:28:23 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:28:23.488912"], ["updated_at", "2017-10-05 05:28:23.488912"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 34], ["created_at", "2017-10-05 05:28:23.491759"], ["updated_at", "2017-10-05 05:28:23.491759"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.3ms | ActiveRecord: 1.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:28:23.498896"], ["updated_at", "2017-10-05 05:28:23.498896"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 35], ["created_at", "2017-10-05 05:28:23.501135"], ["updated_at", "2017-10-05 05:28:23.501135"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/35/last_location" for 127.0.0.1 at 2017-10-05 02:28:23 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"35"}
+  [1m[36mTrucker Load (0.2ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:28:23.512382"], ["id", 35]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 11ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:28:23 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:28:23.521463"], ["updated_at", "2017-10-05 05:28:23.521463"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:28:23.524101"], ["updated_at", "2017-10-05 05:28:23.524101"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:28:23.526923"], ["updated_at", "2017-10-05 05:28:23.526923"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 5], ["origin_id", 5], ["destination_id", 5], ["created_at", "2017-10-05 05:28:23.530327"], ["updated_at", "2017-10-05 05:28:23.530327"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["shipment_id", 5], ["created_at", "2017-10-05 05:28:23.543725"], ["updated_at", "2017-10-05 05:28:23.543725"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["shipment_id", 5], ["created_at", "2017-10-05 05:28:23.546627"], ["updated_at", "2017-10-05 05:28:23.546627"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 28ms (Views: 0.3ms | ActiveRecord: 7.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Rodolfo"], ["phone", "(11)7628-8278"], ["created_at", "2017-10-05 05:28:23.552161"], ["updated_at", "2017-10-05 05:28:23.552161"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-29"], ["created_at", "2017-10-05 05:28:23.553561"], ["updated_at", "2017-10-05 05:28:23.553561"]]
+  [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:28:23.557983"], ["updated_at", "2017-10-05 05:28:23.557983"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1000.0], ["weight_kg", 500], ["contact_id", 6], ["origin_id", 6], ["destination_id", 6], ["created_at", "2017-10-05 05:28:23.559512"], ["updated_at", "2017-10-05 05:28:23.559512"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/shipments/6" for 127.0.0.1 at 2017-10-05 02:28:23 -0300
+Processing by Api::ShipmentsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 6]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (101.0ms)
+Completed 200 OK in 151ms (Views: 148.6ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:29:37 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:29:37.541426"], ["updated_at", "2017-10-05 05:29:37.541426"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 36], ["created_at", "2017-10-05 05:29:37.544057"], ["updated_at", "2017-10-05 05:29:37.544057"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.2ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:29:37.550953"], ["updated_at", "2017-10-05 05:29:37.550953"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 37], ["created_at", "2017-10-05 05:29:37.553024"], ["updated_at", "2017-10-05 05:29:37.553024"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/37/last_location" for 127.0.0.1 at 2017-10-05 02:29:37 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"37"}
+  [1m[36mTrucker Load (0.2ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:29:37.564083"], ["id", 37]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 11ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:29:37 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:29:37.572382"], ["updated_at", "2017-10-05 05:29:37.572382"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:29:37.574672"], ["updated_at", "2017-10-05 05:29:37.574672"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:29:37.577188"], ["updated_at", "2017-10-05 05:29:37.577188"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 7], ["origin_id", 7], ["destination_id", 7], ["created_at", "2017-10-05 05:29:37.580510"], ["updated_at", "2017-10-05 05:29:37.580510"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["shipment_id", 7], ["created_at", "2017-10-05 05:29:37.593157"], ["updated_at", "2017-10-05 05:29:37.593157"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["shipment_id", 7], ["created_at", "2017-10-05 05:29:37.595670"], ["updated_at", "2017-10-05 05:29:37.595670"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 26ms (Views: 0.3ms | ActiveRecord: 6.5ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Rodolfo"], ["phone", "(11)7628-8278"], ["created_at", "2017-10-05 05:29:37.600615"], ["updated_at", "2017-10-05 05:29:37.600615"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-29"], ["created_at", "2017-10-05 05:29:37.602016"], ["updated_at", "2017-10-05 05:29:37.602016"]]
+  [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:29:37.605517"], ["updated_at", "2017-10-05 05:29:37.605517"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1000.0], ["weight_kg", 500], ["contact_id", 8], ["origin_id", 8], ["destination_id", 8], ["created_at", "2017-10-05 05:29:37.606680"], ["updated_at", "2017-10-05 05:29:37.606680"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/shipments/8" for 127.0.0.1 at 2017-10-05 02:29:37 -0300
+Processing by Api::ShipmentsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 8]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (22.99ms)
+Completed 200 OK in 39ms (Views: 35.9ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:31:04 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:31:04.463751"], ["updated_at", "2017-10-05 05:31:04.463751"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 38], ["created_at", "2017-10-05 05:31:04.466287"], ["updated_at", "2017-10-05 05:31:04.466287"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.1ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:31:04.473236"], ["updated_at", "2017-10-05 05:31:04.473236"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 39], ["created_at", "2017-10-05 05:31:04.475291"], ["updated_at", "2017-10-05 05:31:04.475291"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/39/last_location" for 127.0.0.1 at 2017-10-05 02:31:04 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"39"}
+  [1m[36mTrucker Load (0.2ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:31:04.486562"], ["id", 39]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 11ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:31:04 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:31:04.494946"], ["updated_at", "2017-10-05 05:31:04.494946"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:31:04.497226"], ["updated_at", "2017-10-05 05:31:04.497226"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:31:04.499876"], ["updated_at", "2017-10-05 05:31:04.499876"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 9], ["origin_id", 9], ["destination_id", 9], ["created_at", "2017-10-05 05:31:04.503167"], ["updated_at", "2017-10-05 05:31:04.503167"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["shipment_id", 9], ["created_at", "2017-10-05 05:31:04.515478"], ["updated_at", "2017-10-05 05:31:04.515478"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["shipment_id", 9], ["created_at", "2017-10-05 05:31:04.517949"], ["updated_at", "2017-10-05 05:31:04.517949"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 26ms (Views: 0.5ms | ActiveRecord: 6.7ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:31:04.523247"], ["updated_at", "2017-10-05 05:31:04.523247"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:31:04.524622"], ["updated_at", "2017-10-05 05:31:04.524622"]]
+  [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:31:04.528116"], ["updated_at", "2017-10-05 05:31:04.528116"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 10], ["origin_id", 10], ["destination_id", 10], ["created_at", "2017-10-05 05:31:04.529331"], ["updated_at", "2017-10-05 05:31:04.529331"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/shipments/10" for 127.0.0.1 at 2017-10-05 02:31:04 -0300
+Processing by Api::ShipmentsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 10]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (22.47ms)
+Completed 200 OK in 38ms (Views: 36.1ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:31:48 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:31:48.745709"], ["updated_at", "2017-10-05 05:31:48.745709"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 40], ["created_at", "2017-10-05 05:31:48.748374"], ["updated_at", "2017-10-05 05:31:48.748374"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.2ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:31:48.755663"], ["updated_at", "2017-10-05 05:31:48.755663"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 41], ["created_at", "2017-10-05 05:31:48.757924"], ["updated_at", "2017-10-05 05:31:48.757924"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/41/last_location" for 127.0.0.1 at 2017-10-05 02:31:48 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"41"}
+  [1m[36mTrucker Load (0.3ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:31:48.769808"], ["id", 41]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 12ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:31:48 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:31:48.778544"], ["updated_at", "2017-10-05 05:31:48.778544"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:31:48.781485"], ["updated_at", "2017-10-05 05:31:48.781485"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:31:48.784680"], ["updated_at", "2017-10-05 05:31:48.784680"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 11], ["origin_id", 11], ["destination_id", 11], ["created_at", "2017-10-05 05:31:48.787577"], ["updated_at", "2017-10-05 05:31:48.787577"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["shipment_id", 11], ["created_at", "2017-10-05 05:31:48.800975"], ["updated_at", "2017-10-05 05:31:48.800975"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["shipment_id", 11], ["created_at", "2017-10-05 05:31:48.803754"], ["updated_at", "2017-10-05 05:31:48.803754"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 28ms (Views: 0.4ms | ActiveRecord: 8.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:31:48.809162"], ["updated_at", "2017-10-05 05:31:48.809162"]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:31:48.810535"], ["updated_at", "2017-10-05 05:31:48.810535"]]
+  [1m[36mOrigin Load (0.4ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:31:48.815762"], ["updated_at", "2017-10-05 05:31:48.815762"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 12], ["origin_id", 12], ["destination_id", 12], ["created_at", "2017-10-05 05:31:48.817058"], ["updated_at", "2017-10-05 05:31:48.817058"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/shipments/12" for 127.0.0.1 at 2017-10-05 02:31:48 -0300
+Processing by Api::ShipmentsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 12]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (22.74ms)
+Completed 200 OK in 39ms (Views: 35.9ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:34:48 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:34:48.837156"], ["updated_at", "2017-10-05 05:34:48.837156"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 42], ["created_at", "2017-10-05 05:34:48.839674"], ["updated_at", "2017-10-05 05:34:48.839674"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.1ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:34:48.846382"], ["updated_at", "2017-10-05 05:34:48.846382"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 43], ["created_at", "2017-10-05 05:34:48.848555"], ["updated_at", "2017-10-05 05:34:48.848555"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/43/last_location" for 127.0.0.1 at 2017-10-05 02:34:48 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"43"}
+  [1m[36mTrucker Load (0.2ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:34:48.859776"], ["id", 43]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 11ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:34:48 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:34:48.868469"], ["updated_at", "2017-10-05 05:34:48.868469"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:34:48.870921"], ["updated_at", "2017-10-05 05:34:48.870921"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:34:48.873387"], ["updated_at", "2017-10-05 05:34:48.873387"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 13], ["origin_id", 13], ["destination_id", 13], ["created_at", "2017-10-05 05:34:48.876755"], ["updated_at", "2017-10-05 05:34:48.876755"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["shipment_id", 13], ["created_at", "2017-10-05 05:34:48.889025"], ["updated_at", "2017-10-05 05:34:48.889025"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["shipment_id", 13], ["created_at", "2017-10-05 05:34:48.891563"], ["updated_at", "2017-10-05 05:34:48.891563"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 26ms (Views: 0.3ms | ActiveRecord: 6.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:34:48.896590"], ["updated_at", "2017-10-05 05:34:48.896590"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:34:48.897979"], ["updated_at", "2017-10-05 05:34:48.897979"]]
+  [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:34:48.901450"], ["updated_at", "2017-10-05 05:34:48.901450"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 14], ["origin_id", 14], ["destination_id", 14], ["created_at", "2017-10-05 05:34:48.902662"], ["updated_at", "2017-10-05 05:34:48.902662"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/shipments/14" for 127.0.0.1 at 2017-10-05 02:34:48 -0300
+Processing by Api::ShipmentsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 14]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (23.07ms)
+Completed 200 OK in 39ms (Views: 36.2ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:36:07 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:36:07.367010"], ["updated_at", "2017-10-05 05:36:07.367010"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 44], ["created_at", "2017-10-05 05:36:07.369853"], ["updated_at", "2017-10-05 05:36:07.369853"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.3ms | ActiveRecord: 1.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:36:07.377065"], ["updated_at", "2017-10-05 05:36:07.377065"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 45], ["created_at", "2017-10-05 05:36:07.379130"], ["updated_at", "2017-10-05 05:36:07.379130"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/45/last_location" for 127.0.0.1 at 2017-10-05 02:36:07 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"45"}
+  [1m[36mTrucker Load (0.3ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:36:07.390590"], ["id", 45]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 11ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:36:07 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:36:07.399268"], ["updated_at", "2017-10-05 05:36:07.399268"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:36:07.401644"], ["updated_at", "2017-10-05 05:36:07.401644"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:36:07.405043"], ["updated_at", "2017-10-05 05:36:07.405043"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 15], ["origin_id", 15], ["destination_id", 15], ["created_at", "2017-10-05 05:36:07.408022"], ["updated_at", "2017-10-05 05:36:07.408022"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["shipment_id", 15], ["created_at", "2017-10-05 05:36:07.421608"], ["updated_at", "2017-10-05 05:36:07.421608"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["shipment_id", 15], ["created_at", "2017-10-05 05:36:07.424384"], ["updated_at", "2017-10-05 05:36:07.424384"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 28ms (Views: 0.3ms | ActiveRecord: 8.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:36:07.429646"], ["updated_at", "2017-10-05 05:36:07.429646"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:36:07.431094"], ["updated_at", "2017-10-05 05:36:07.431094"]]
+  [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:36:07.436087"], ["updated_at", "2017-10-05 05:36:07.436087"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 16], ["origin_id", 16], ["destination_id", 16], ["created_at", "2017-10-05 05:36:07.437408"], ["updated_at", "2017-10-05 05:36:07.437408"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/shipments/16" for 127.0.0.1 at 2017-10-05 02:36:07 -0300
+Processing by Api::ShipmentsController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 16]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (23.27ms)
+Completed 200 OK in 39ms (Views: 36.3ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:37:20 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:37:20.465715"], ["updated_at", "2017-10-05 05:37:20.465715"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 46], ["created_at", "2017-10-05 05:37:20.468525"], ["updated_at", "2017-10-05 05:37:20.468525"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.3ms | ActiveRecord: 1.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:37:20.475584"], ["updated_at", "2017-10-05 05:37:20.475584"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 47], ["created_at", "2017-10-05 05:37:20.477755"], ["updated_at", "2017-10-05 05:37:20.477755"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/47/last_location" for 127.0.0.1 at 2017-10-05 02:37:20 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"47"}
+  [1m[36mTrucker Load (0.3ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:37:20.489579"], ["id", 47]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 12ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:37:20 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:37:20.498266"], ["updated_at", "2017-10-05 05:37:20.498266"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:37:20.500711"], ["updated_at", "2017-10-05 05:37:20.500711"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:37:20.504000"], ["updated_at", "2017-10-05 05:37:20.504000"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 17], ["origin_id", 17], ["destination_id", 17], ["created_at", "2017-10-05 05:37:20.507386"], ["updated_at", "2017-10-05 05:37:20.507386"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["shipment_id", 17], ["created_at", "2017-10-05 05:37:20.520680"], ["updated_at", "2017-10-05 05:37:20.520680"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["shipment_id", 17], ["created_at", "2017-10-05 05:37:20.523222"], ["updated_at", "2017-10-05 05:37:20.523222"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 28ms (Views: 0.3ms | ActiveRecord: 6.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:37:20.528273"], ["updated_at", "2017-10-05 05:37:20.528273"]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:37:20.529938"], ["updated_at", "2017-10-05 05:37:20.529938"]]
+  [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:37:20.536449"], ["updated_at", "2017-10-05 05:37:20.536449"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 18], ["origin_id", 18], ["destination_id", 18], ["created_at", "2017-10-05 05:37:20.538148"], ["updated_at", "2017-10-05 05:37:20.538148"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/shipments/18" for 127.0.0.1 at 2017-10-05 02:37:20 -0300
+Processing by Api::ShipmentsController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 18]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (23.65ms)
+Completed 200 OK in 40ms (Views: 36.8ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 02:37:43 -0300
+Processing by Api::TruckersController#create as HTML
+  Parameters: {"trucker"=>{"name"=>"Lincoln Falcão", "phone"=>"(11) 97654-3210", "vehicle"=>{"type"=>"Truck", "body_type"=>"Baú"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["created_at", "2017-10-05 05:37:43.343775"], ["updated_at", "2017-10-05 05:37:43.343775"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lincoln Falcão"], ["phone", "(11) 97654-3210"], ["vehicle_id", 48], ["created_at", "2017-10-05 05:37:43.346362"], ["updated_at", "2017-10-05 05:37:43.346362"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 1.2ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 05:37:43.353417"], ["updated_at", "2017-10-05 05:37:43.353417"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11)9552-7263"], ["vehicle_id", 49], ["created_at", "2017-10-05 05:37:43.355497"], ["updated_at", "2017-10-05 05:37:43.355497"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started PUT "/api/truckers/49/last_location" for 127.0.0.1 at 2017-10-05 02:37:43 -0300
+Processing by Api::TruckersController#last_location as HTML
+  Parameters: {"location"=>{"city"=>"Rio Branco", "state"=>"AC"}, "id"=>"49"}
+  [1m[36mTrucker Load (0.2ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" WHERE "truckers"."id" = $1 LIMIT $2[0m  [["id", 49], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 49], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "truckers" SET "last_city" = $1, "last_state" = $2, "updated_at" = $3 WHERE "truckers"."id" = $4[0m  [["last_city", "Rio Branco"], ["last_state", "AC"], ["updated_at", "2017-10-05 05:37:43.366510"], ["id", 49]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 204 No Content in 11ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 02:37:43 -0300
+Processing by Api::ShipmentsController#create as HTML
+  Parameters: {"shipment"=>{"value"=>"1500.0", "weight_kg"=>"2000", "contact"=>{"name"=>"Carlos", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Truck", "body_type"=>"Baú"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"São Paulo", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:37:43.375159"], ["updated_at", "2017-10-05 05:37:43.375159"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:37:43.377486"], ["updated_at", "2017-10-05 05:37:43.377486"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:37:43.379982"], ["updated_at", "2017-10-05 05:37:43.379982"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 19], ["origin_id", 19], ["destination_id", 19], ["created_at", "2017-10-05 05:37:43.383331"], ["updated_at", "2017-10-05 05:37:43.383331"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Baú"], ["shipment_id", 19], ["created_at", "2017-10-05 05:37:43.395595"], ["updated_at", "2017-10-05 05:37:43.395595"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("vtype", "body_type", "shipment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["shipment_id", 19], ["created_at", "2017-10-05 05:37:43.397988"], ["updated_at", "2017-10-05 05:37:43.397988"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 26ms (Views: 0.3ms | ActiveRecord: 6.4ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 05:37:43.402889"], ["updated_at", "2017-10-05 05:37:43.402889"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "São Paulo"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 05:37:43.404360"], ["updated_at", "2017-10-05 05:37:43.404360"]]
+  [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 05:37:43.407996"], ["updated_at", "2017-10-05 05:37:43.407996"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 20], ["origin_id", 20], ["destination_id", 20], ["created_at", "2017-10-05 05:37:43.409137"], ["updated_at", "2017-10-05 05:37:43.409137"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/shipments/20" for 127.0.0.1 at 2017-10-05 02:37:43 -0300
+Processing by Api::ShipmentsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 20]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (24.19ms)
+Completed 200 OK in 40ms (Views: 37.4ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m

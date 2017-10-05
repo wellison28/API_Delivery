@@ -5043,3 +5043,26 @@ Completed 201 Created in 68ms (Views: 1.5ms | ActiveRecord: 37.5ms)
 
 
   [1m[36mTrucker Load (0.3ms)[0m  [1m[34mSELECT  "truckers".* FROM "truckers" ORDER BY "truckers"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api/shipments/34/nearby_truckers" for 127.0.0.1 at 2017-10-05 02:41:37 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#nearby_truckers as */*
+  Parameters: {"id"=>"34"}
+  [1m[36mShipment Load (0.4ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mOrigin Load (0.6ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[36mTrucker Load (0.4ms)[0m  [1m[34mSELECT "truckers".* FROM "truckers" WHERE "truckers"."last_state" = $1 AND "truckers"."last_city" = $2[0m  [["last_state", "AC"], ["last_city", "Rio Branco"]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (17.29ms)
+Completed 200 OK in 109ms (Views: 39.5ms | ActiveRecord: 18.9ms)
+
+
+Started GET "/api/shipments/34/nearby_truckers" for 127.0.0.1 at 2017-10-05 02:42:35 -0300
+Processing by Api::ShipmentsController#nearby_truckers as */*
+  Parameters: {"id"=>"34"}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[36mTrucker Load (2.2ms)[0m  [1m[34mSELECT "truckers".* FROM "truckers" WHERE "truckers"."last_state" = $1 AND "truckers"."last_city" = $2[0m  [["last_state", "AC"], ["last_city", "Rio Branco"]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (20.57ms)
+Completed 200 OK in 63ms (Views: 32.7ms | ActiveRecord: 3.0ms)
+
+
