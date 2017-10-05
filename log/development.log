@@ -5066,3 +5066,100 @@ Processing by Api::ShipmentsController#nearby_truckers as */*
 Completed 200 OK in 63ms (Views: 32.7ms | ActiveRecord: 3.0ms)
 
 
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 03:13:27 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"Truck", "body_type"=>"Sider"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-05 06:13:27.909114"], ["updated_at", "2017-10-05 06:13:27.909114"]]
+  [1m[35m (18.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Astolfo"], ["phone", "(11)5837-2817"], ["vehicle_id", 20], ["created_at", "2017-10-05 06:13:27.954448"], ["updated_at", "2017-10-05 06:13:27.954448"]]
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 75ms (Views: 1.6ms | ActiveRecord: 37.8ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 03:13:59 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"", "body_type"=>"Sider"}}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.11ms)
+Completed 422 Unprocessable Entity in 598ms (Views: 24.5ms | ActiveRecord: 5.2ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 03:14:27 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"", "body_type"=>"Sider"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.1ms)
+Completed 422 Unprocessable Entity in 14ms (Views: 3.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 03:15:02 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"", "body_type"=>"Sider"}}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `parse_json' for #<ActiveModel::Errors:0x0055d136dda088>
+Did you mean?  as_json):
+  
+app/controllers/api/truckers_controller.rb:24:in `create'
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 03:15:39 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"", "body_type"=>"Sider"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `any' for #<ActiveModel::Errors:0x007f3d101727b8>
+Did you mean?  any?):
+  
+app/controllers/api/truckers_controller.rb:24:in `create'
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 03:16:29 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"", "body_type"=>"Sider"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.1ms)
+Completed 422 Unprocessable Entity in 17ms (Views: 4.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 03:17:57 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"", "body_type"=>"Sider"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `empty' for #<ActiveModel::Errors:0x007f3d19596a98>
+Did you mean?  empty?):
+  
+app/controllers/api/truckers_controller.rb:24:in `create'
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 03:18:07 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"", "body_type"=>"Sider"}}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.09ms)
+Completed 422 Unprocessable Entity in 14ms (Views: 3.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 03:18:31 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"", "body_type"=>"Sider"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.1ms)
+Completed 422 Unprocessable Entity in 18ms (Views: 3.5ms | ActiveRecord: 0.3ms)
+
+
