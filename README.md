@@ -1,13 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API Delivery
+Link: https://api-delivery28.herokuapp.com/api
 
-Things you may want to cover:
+A aplicação esta programada em Ruby 2.3.1, com Rails 5 e base de dados PostgreSQL.
 
-* Ruby version
+Para utilizar 
 
-* System dependencies
+É necessario ter instalado o Ruby e op Rails nas versoes ditas acima
+
+Dependencias
+
+Serializador
+gem 'active_model_serializers', '~> 0.10.0'
+
+Database
+gem 'pg', '~> 0.21.0'
+
+Testes
+gem 'rspec-rails', '~> 3.6'
+
 
 * Configuration
 

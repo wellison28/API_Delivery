@@ -5163,3 +5163,37 @@ Processing by Api::TruckersController#create as */*
 Completed 422 Unprocessable Entity in 18ms (Views: 3.5ms | ActiveRecord: 0.3ms)
 
 
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 04:29:30 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"", "body_type"=>"Sider"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.11ms)
+Completed 422 Unprocessable Entity in 388ms (Views: 3.1ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/api/truckers" for 127.0.0.1 at 2017-10-05 04:29:42 -0300
+Processing by Api::TruckersController#create as */*
+  Parameters: {"trucker"=>{"name"=>"Astolfo", "phone"=>"(11)5837-2817", "vehicle"=>{"type"=>"ytuh", "body_type"=>"Sider"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "ytuh"], ["body_type", "Sider"], ["created_at", "2017-10-05 07:29:42.877336"], ["updated_at", "2017-10-05 07:29:42.877336"]]
+  [1m[35m (18.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "truckers" ("name", "phone", "vehicle_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Astolfo"], ["phone", "(11)5837-2817"], ["vehicle_id", 21], ["created_at", "2017-10-05 07:29:42.912498"], ["updated_at", "2017-10-05 07:29:42.912498"]]
+  [1m[35m (36.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 84ms (Views: 1.6ms | ActiveRecord: 63.6ms)
+
+
+Started GET "/api/shipments/30" for 127.0.0.1 at 2017-10-05 04:30:57 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"30", "shipment"=>{}}
+  [1m[36mShipment Load (0.8ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.4ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.4ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 30]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (73.4ms)
+Completed 200 OK in 105ms (Views: 73.9ms | ActiveRecord: 19.0ms)
+
+
