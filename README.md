@@ -1,6 +1,5 @@
-<h1>API Delivery<h1>
+<h1>API Delivery</h1>
 
-<p>Site</p>
 <p>https://api-delivery28.herokuapp.com/api</p>
 
 <h2>Objetivo</h2>
@@ -28,7 +27,7 @@ $ rake db:create
 $ rake db:migrate
 ```
 
-<h2>Dependencias<h2>
+<h2>Dependencias</h2>
 
 Serializador
 >gem 'active_model_serializers', '~> 0.10.0'
