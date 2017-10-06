@@ -87,8 +87,15 @@ def create
 		@shipment = Shipment.find(params[:id])
 		city = @shipment.origin.city
 		state = @shipment.origin.state
-		@truckers = Trucker.where(last_state: state, last_city: city)
-		render json: @truckers, content_type: "application/json"
+		vehicles = ShipmentVehicle.where(shipment_id: params[:id]).select(:vehicle_id)
+
+		truckers = Trucker.where(last_state: state, last_city: city, vehicle_id: vehicles[0][:vehicle_id])
+		for i in 1..(vehicles.count - 1)
+			aux = Trucker.where(last_state: state, last_city: city, vehicle_id: vehicles[i][:vehicle_id])
+			truckers += aux
+		end
+	
+		render json: truckers, content_type: "application/json"
 	end
 end
 end
