@@ -1,9 +1,8 @@
 module Api
 class ShipmentsController < ApplicationController
 
-def vehicle(vtype, body_type)
+def mantemVehicle(vtype, body_type)
 	@vehicle = Vehicle.find_by(vtype: vtype, body_type: body_type)
-
 	if !@vehicle
 		@vehicle = Vehicle.new(vtype: vtype,
 					   		   body_type: body_type)
@@ -14,7 +13,7 @@ def vehicle(vtype, body_type)
 	end
 	@vehicle
 end
-			
+
 def create
 		origin = shipment_params[:origin]
 		destination = shipment_params[:destination]
@@ -34,7 +33,7 @@ def create
 											 destination: @destination)
 					if @shipment.save
 						for i in 0..(vehicles.count - 1)
-							@vehicle = vehicle(vehicles[i][:type], 
+							@vehicle = mantemVehicle(vehicles[i][:type], 
 									           vehicles[i][:body_type])
 							if @vehicle != nil
 								@vehicle.save
@@ -84,12 +83,10 @@ def create
 		render json: @ship,  content_type: "application/json"
 	end
 
-	#busca e exibe todos caminhoneiros que estao proximo(com o last_city e last_state igual a origin daentrega)
-	#de determinada remessa
 	def nearby_truckers
-		shipment = Shipment.find(params[:id])
-		city = shipment.origin.city
-		state = shipment.origin.state
+		@shipment = Shipment.find(params[:id])
+		city = @shipment.origin.city
+		state = @shipment.origin.state
 		@truckers = Trucker.where(last_state: state, last_city: city)
 		render json: @truckers, content_type: "application/json"
 	end
