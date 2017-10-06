@@ -2,6 +2,13 @@ class ShipmentVehicleSerializer < ActiveModel::Serializer
 	has_one :shipment
 	has_one :vehicle
 
-	# attribute :vtype, key: :type
- #    attribute :body_type
+	attributes :type, :body_type
+
+	def type
+		Vehicle.find(object.vehicle_id).vtype
+	end
+
+	def body_type
+		Vehicle.find(object.vehicle_id).body_type
+	end
 end

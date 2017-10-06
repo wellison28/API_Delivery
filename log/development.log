@@ -5373,3 +5373,1757 @@ Processing by Api::ShipmentsController#show as */*
 Completed 200 OK in 81ms (Views: 59.4ms | ActiveRecord: 2.2ms)
 
 
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 18:01:57 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.52ms)
+Completed 422 Unprocessable Entity in 614ms (Views: 14.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 18:02:21 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Wellison", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (16.8ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 21:02:21.464738"], ["updated_at", "2017-10-05 21:02:21.464738"]]
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (41.6ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 21:02:21.507539"], ["updated_at", "2017-10-05 21:02:21.507539"]]
+  [1m[35m (33.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (43.7ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 21:02:21.594058"], ["updated_at", "2017-10-05 21:02:21.594058"]]
+  [1m[35m (33.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (29.1ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 29], ["origin_id", 78], ["destination_id", 91], ["created_at", "2017-10-05 21:02:21.689052"], ["updated_at", "2017-10-05 21:02:21.689052"]]
+  [1m[35m (31.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 298ms (ActiveRecord: 252.9ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'vtype' for ShipmentVehicle.):
+  
+app/controllers/api/shipments_controller.rb:23:in `block in create'
+app/controllers/api/shipments_controller.rb:22:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 18:06:49 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Wellison", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 21:06:49.917499"], ["updated_at", "2017-10-05 21:06:49.917499"]]
+  [1m[35m (35.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 21:06:49.976813"], ["updated_at", "2017-10-05 21:06:49.976813"]]
+  [1m[35m (42.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 21:06:50.033330"], ["updated_at", "2017-10-05 21:06:50.033330"]]
+  [1m[35m (18.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 30], ["origin_id", 79], ["destination_id", 92], ["created_at", "2017-10-05 21:06:50.079239"], ["updated_at", "2017-10-05 21:06:50.079239"]]
+  [1m[35m (28.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 232ms (ActiveRecord: 145.1ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'vehicle' for ShipmentVehicle.):
+  
+app/controllers/api/shipments_controller.rb:25:in `block in create'
+app/controllers/api/shipments_controller.rb:22:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 18:08:45 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Wellison", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 21:08:45.809140"], ["updated_at", "2017-10-05 21:08:45.809140"]]
+  [1m[35m (39.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 21:08:45.859943"], ["updated_at", "2017-10-05 21:08:45.859943"]]
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 21:08:45.879194"], ["updated_at", "2017-10-05 21:08:45.879194"]]
+  [1m[35m (47.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 31], ["origin_id", 80], ["destination_id", 93], ["created_at", "2017-10-05 21:08:45.936531"], ["updated_at", "2017-10-05 21:08:45.936531"]]
+  [1m[35m (44.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["created_at", "2017-10-05 21:08:45.995233"], ["updated_at", "2017-10-05 21:08:45.995233"]]
+  [1m[35m (8.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 209ms (ActiveRecord: 149.5ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'vehicle' for ShipmentVehicle.):
+  
+app/controllers/api/shipments_controller.rb:26:in `block in create'
+app/controllers/api/shipments_controller.rb:22:in `create'
+  [1m[36mVehicle Load (0.4ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" ORDER BY "vehicles"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" ORDER BY "shipments"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6643483464595264770)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6643483464595264770)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 18:13:07 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Wellison", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 21:13:07.610240"], ["updated_at", "2017-10-05 21:13:07.610240"]]
+  [1m[35m (52.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 21:13:07.672111"], ["updated_at", "2017-10-05 21:13:07.672111"]]
+  [1m[35m (12.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 21:13:07.692930"], ["updated_at", "2017-10-05 21:13:07.692930"]]
+  [1m[35m (34.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 32], ["origin_id", 81], ["destination_id", 94], ["created_at", "2017-10-05 21:13:07.744748"], ["updated_at", "2017-10-05 21:13:07.744748"]]
+  [1m[35m (28.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["created_at", "2017-10-05 21:13:07.785200"], ["updated_at", "2017-10-05 21:13:07.785200"]]
+  [1m[35m (10.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (7.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 223ms (ActiveRecord: 148.4ms)
+
+
+  
+NoMethodError (undefined method `body_type' for #<ShipmentVehicle:0x007fc310fa4328>):
+  
+app/controllers/api/shipments_controller.rb:28:in `block in create'
+app/controllers/api/shipments_controller.rb:22:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 18:14:14 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Wellison", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 21:14:14.171568"], ["updated_at", "2017-10-05 21:14:14.171568"]]
+  [1m[35m (63.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 21:14:14.249218"], ["updated_at", "2017-10-05 21:14:14.249218"]]
+  [1m[35m (18.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 21:14:14.276892"], ["updated_at", "2017-10-05 21:14:14.276892"]]
+  [1m[35m (47.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 33], ["origin_id", 82], ["destination_id", 95], ["created_at", "2017-10-05 21:14:14.339463"], ["updated_at", "2017-10-05 21:14:14.339463"]]
+  [1m[35m (28.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["created_at", "2017-10-05 21:14:14.378174"], ["updated_at", "2017-10-05 21:14:14.378174"]]
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 246ms (ActiveRecord: 173.1ms)
+
+
+  
+NoMethodError (undefined method `body_type' for #<ShipmentVehicle:0x007fc3108c72f8>):
+  
+app/controllers/api/shipments_controller.rb:28:in `block in create'
+app/controllers/api/shipments_controller.rb:22:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 18:14:41 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Wellison", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 21:14:41.470909"], ["updated_at", "2017-10-05 21:14:41.470909"]]
+  [1m[35m (60.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 21:14:41.547011"], ["updated_at", "2017-10-05 21:14:41.547011"]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 21:14:41.570690"], ["updated_at", "2017-10-05 21:14:41.570690"]]
+  [1m[35m (39.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 34], ["origin_id", 83], ["destination_id", 96], ["created_at", "2017-10-05 21:14:41.620746"], ["updated_at", "2017-10-05 21:14:41.620746"]]
+  [1m[35m (45.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["created_at", "2017-10-05 21:14:41.674337"], ["updated_at", "2017-10-05 21:14:41.674337"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 232ms (ActiveRecord: 160.4ms)
+
+
+  
+NoMethodError (undefined method `body_type' for #<ShipmentVehicle:0x00564e8225cf70>):
+  
+app/controllers/api/shipments_controller.rb:29:in `block in create'
+app/controllers/api/shipments_controller.rb:22:in `create'
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-05 18:15:36 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Wellison", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}], "origin"=>{"city"=>"Rio Branco", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-05 21:15:36.056234"], ["updated_at", "2017-10-05 21:15:36.056234"]]
+  [1m[35m (48.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-05 21:15:36.118521"], ["updated_at", "2017-10-05 21:15:36.118521"]]
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-05 21:15:36.140347"], ["updated_at", "2017-10-05 21:15:36.140347"]]
+  [1m[35m (43.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 35], ["origin_id", 84], ["destination_id", 97], ["created_at", "2017-10-05 21:15:36.193346"], ["updated_at", "2017-10-05 21:15:36.193346"]]
+  [1m[35m (45.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["created_at", "2017-10-05 21:15:36.247309"], ["updated_at", "2017-10-05 21:15:36.247309"]]
+  [1m[35m (12.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (21.1ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("shipment_id", "created_at", "updated_at", "vehicle_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["shipment_id", 56], ["created_at", "2017-10-05 21:15:36.270494"], ["updated_at", "2017-10-05 21:15:36.270494"], ["vehicle_id", 30]]
+  [1m[35m (12.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "kombi"], ["body_type", "pequena"], ["created_at", "2017-10-05 21:15:36.307079"], ["updated_at", "2017-10-05 21:15:36.307079"]]
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("shipment_id", "created_at", "updated_at", "vehicle_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["shipment_id", 56], ["created_at", "2017-10-05 21:15:36.318173"], ["updated_at", "2017-10-05 21:15:36.318173"], ["vehicle_id", 31]]
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 289ms (Views: 1.4ms | ActiveRecord: 213.0ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:15:51 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.4ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (25.4ms)
+Completed 200 OK in 30ms (Views: 26.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:15:52 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.6ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.5ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (11.09ms)
+Completed 200 OK in 14ms (Views: 10.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:16:42 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (1.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (1.1ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (48.53ms)
+Completed 200 OK in 65ms (Views: 48.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:17:06 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (1.1ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (48.09ms)
+Completed 200 OK in 61ms (Views: 48.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:17:20 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (67.96ms)
+Completed 200 OK in 85ms (Views: 68.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:17:43 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (47.67ms)
+Completed 500 Internal Server Error in 59ms (ActiveRecord: 1.2ms)
+
+
+  
+NameError (undefined local variable or method `vtype' for ShipmentVehicleSerializer:Class
+Did you mean?  type
+               _type):
+  
+app/serializers/shipment_vehicle_serializer.rb:5:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:17:53 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (49.68ms)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 1.2ms)
+
+
+  
+NameError (undefined local variable or method `vtype' for ShipmentVehicleSerializer:Class
+Did you mean?  type
+               _type):
+  
+app/serializers/shipment_vehicle_serializer.rb:5:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:18:07 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (56.4ms)
+Completed 200 OK in 79ms (Views: 56.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:18:47 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (48.08ms)
+Completed 200 OK in 62ms (Views: 49.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:18:49 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (2.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (2.7ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (18.5ms)
+Completed 200 OK in 21ms (Views: 13.0ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:21:04 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (84.17ms)
+Completed 200 OK in 99ms (Views: 65.9ms | ActiveRecord: 28.3ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:21:06 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.4ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.6ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.7ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (15.8ms)
+Completed 200 OK in 18ms (Views: 13.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:21:17 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (65.27ms)
+Completed 200 OK in 79ms (Views: 52.6ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:23:06 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.4ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (42.46ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `attributes' for #<ActiveModel::Serializer::HasManyReflection:0x00564e825ad800>):
+  
+app/serializers/shipment_serializer.rb:8:in `block in <class:ShipmentSerializer>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:23:17 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (38.33ms)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `attribute' for #<ActiveModel::Serializer::HasManyReflection:0x007fc311277d70>):
+  
+app/serializers/shipment_serializer.rb:8:in `block in <class:ShipmentSerializer>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:26:06 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (66.37ms)
+Completed 200 OK in 79ms (Views: 62.8ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:36:54 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/home/wellison/API_Delivery/app/serializers/shipment_serializer.rb:5: syntax error, unexpected '\n', expecting =>):
+  
+app/serializers/shipment_serializer.rb:5: syntax error, unexpected '\n', expecting =>
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:37:17 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (1.1ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (54.54ms)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 2.1ms)
+
+
+  
+NoMethodError (undefined method `key?' for Array:Class):
+  
+app/serializers/vehicle_serializer.rb:3:in `<class:VehicleSerializer>'
+app/serializers/vehicle_serializer.rb:1:in `<top (required)>'
+app/serializers/shipment_vehicle_serializer.rb:3:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:40:29 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.5ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (62.24ms)
+Completed 200 OK in 80ms (Views: 62.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:40:41 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (1.1ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (55.04ms)
+Completed 200 OK in 68ms (Views: 54.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:40:42 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.4ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (2.1ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.4ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.4ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (12.68ms)
+Completed 200 OK in 15ms (Views: 9.3ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:40:58 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (75.76ms)
+Completed 200 OK in 91ms (Views: 60.8ms | ActiveRecord: 23.7ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:40:59 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.5ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.5ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (1.1ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (16.87ms)
+Completed 200 OK in 20ms (Views: 14.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:43:45 -0300
+  
+ArgumentError (Unknown key: :each_serializer. Valid keys are: :class_name, :anonymous_class, :foreign_key, :validate, :autosave, :table_name, :before_add, :after_add, :before_remove, :after_remove, :extend, :primary_key, :dependent, :as, :through, :source, :source_type, :inverse_of, :counter_cache, :join_table, :foreign_type, :index_errors):
+  
+app/models/shipment.rb:5:in `<class:Shipment>'
+app/models/shipment.rb:1:in `<top (required)>'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:44:29 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.1ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (1.8ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (79.55ms)
+Completed 200 OK in 93ms (Views: 63.3ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:45:15 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.7ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (52.31ms)
+Completed 200 OK in 66ms (Views: 52.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:48:03 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (43.12ms)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 1.1ms)
+
+
+  
+SyntaxError (/home/wellison/API_Delivery/app/serializers/shipment_vehicle_serializer.rb:5: syntax error, unexpected ':', expecting keyword_end
+	each_serializer: VehicleSerializer
+	                ^):
+  
+app/serializers/shipment_vehicle_serializer.rb:5: syntax error, unexpected ':', expecting keyword_end
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:48:13 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (45.55ms)
+Completed 200 OK in 63ms (Views: 46.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:48:31 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (49.88ms)
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `vtype' for #<ShipmentVehicle:0x00564e80700fd8>):
+  
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:48:44 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (44.47ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 1.3ms)
+
+
+  
+NoMethodError (undefined method `each' for :vtype:Symbol):
+  
+app/serializers/shipment_vehicle_serializer.rb:5:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:52:51 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (0.44ms)
+Completed 200 OK in 13ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:53:19 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `serializer' for #<Shipment:0x007fc311227348>
+Did you mean?  serializable_hash):
+  
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:56:20 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `serializer' for #<Shipment:0x00564e82661968>
+Did you mean?  serializable_hash):
+  
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:57:44 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (18.15ms)
+Completed 200 OK in 33ms (Views: 17.4ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 18:59:22 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (0.42ms)
+Completed 200 OK in 11ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 19:01:55 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (52.84ms)
+Completed 200 OK in 65ms (Views: 46.5ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 20:42:38 -0300
+  [1m[35m (34.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (29.4ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (11.9ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.8ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.6ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (41.5ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (128.27ms)
+Completed 200 OK in 267ms (Views: 145.2ms | ActiveRecord: 137.2ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 20:45:55 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.4ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (31.6ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (90.92ms)
+Completed 500 Internal Server Error in 116ms (ActiveRecord: 35.8ms)
+
+
+  
+NoMethodError (undefined method `map' for #<Vehicle:0x0055ec4e659e70>
+Did you mean?  tap):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 21:34:36 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.4ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (49.29ms)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 1.6ms)
+
+
+  
+NoMethodError (undefined method `vehicles' for #<ShipmentVehicle:0x0055ec4ea03990>
+Did you mean?  vehicle
+               vehicle=):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 21:35:03 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.4ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.4ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (49.79ms)
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 1.7ms)
+
+
+  
+NoMethodError (undefined method `vehicles' for #<ShipmentVehicle:0x0055ec4dbb8908>
+Did you mean?  vehicle
+               vehicle=):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicles'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-05 21:36:31 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (1.0ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (51.81ms)
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 2.2ms)
+
+
+  
+NoMethodError (undefined method `vehicles' for #<ShipmentVehicle:0x0055ec4c7a6258>
+Did you mean?  vehicle
+               vehicle=):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicles'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:16:48 -0300
+  [1m[35m (33.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (29.5ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (11.7ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.8ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.7ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (41.4ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (133.39ms)
+Completed 500 Internal Server Error in 295ms (ActiveRecord: 137.2ms)
+
+
+  
+NoMethodError (undefined method `vehicles' for #<ShipmentVehicle:0x00564e33323818>
+Did you mean?  vehicle
+               vehicle=):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicles'
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicles'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:17:29 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.5ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (72.7ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (134.89ms)
+Completed 200 OK in 149ms (Views: 61.0ms | ActiveRecord: 76.7ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:17:57 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (46.11ms)
+Completed 200 OK in 58ms (Views: 46.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:19:00 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (44.28ms)
+Completed 200 OK in 60ms (Views: 45.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:19:21 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.4ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.4ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (59.3ms)
+Completed 200 OK in 72ms (Views: 59.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:19:55 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.4ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.4ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (59.15ms)
+Completed 200 OK in 72ms (Views: 59.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:20:55 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (52.02ms)
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `map' for #<Vehicle:0x00564e32c1ac88>
+Did you mean?  tap):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:21:18 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (64.33ms)
+Completed 500 Internal Server Error in 78ms (ActiveRecord: 1.7ms)
+
+
+  
+NoMethodError (undefined method `map' for #<Vehicle:0x00564e334f6aa0>
+Did you mean?  tap):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:21:27 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.4ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (85.07ms)
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 1.7ms)
+
+
+  
+NoMethodError (undefined method `map' for #<Vehicle:0x00564e32ee67c8>
+Did you mean?  tap):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:21:34 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (51.87ms)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 1.6ms)
+
+
+  
+NoMethodError (undefined method `map' for #<Vehicle:0x00564e3337e998>
+Did you mean?  tap):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:22:05 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (48.49ms)
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `map' for #<Vehicle:0x00564e31db4018>
+Did you mean?  tap):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:23:55 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (54.99ms)
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 1.5ms)
+
+
+  
+NoMethodError (undefined method `map' for #<Vehicle:0x00564e3330eeb8>
+Did you mean?  tap):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/serializers/shipment_vehicle_serializer.rb:8:in `vehicle'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:24:41 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (110.69ms)
+Completed 500 Internal Server Error in 131ms (ActiveRecord: 1.6ms)
+
+
+  
+SystemStackError (stack level too deep):
+  
+app/serializers/shipment_serializer.rb:11:in `new'
+app/serializers/shipment_serializer.rb:11:in `block in shipment_vehicles'
+app/serializers/shipment_serializer.rb:10:in `map'
+app/serializers/shipment_serializer.rb:10:in `shipment_vehicles'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:26:30 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (10.35ms)
+Completed 200 OK in 26ms (Views: 11.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:27:06 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (16.9ms)
+Completed 200 OK in 30ms (Views: 17.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:27:26 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.5ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (15.96ms)
+Completed 200 OK in 31ms (Views: 16.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:27:27 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.8ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.5ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.5ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (5.73ms)
+Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:28:36 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (0.45ms)
+Completed 200 OK in 16ms (Views: 1.9ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:29:25 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.6ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (22.78ms)
+Completed 200 OK in 37ms (Views: 19.8ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:30:39 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (39.48ms)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 0.6ms)
+
+
+  
+SystemStackError (stack level too deep):
+  
+app/serializers/shipment_serializer.rb:11:in `block (2 levels) in <class:ShipmentSerializer>'
+app/serializers/shipment_serializer.rb:10:in `map'
+app/serializers/shipment_serializer.rb:10:in `block in <class:ShipmentSerializer>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:31:19 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (19.41ms)
+Completed 200 OK in 35ms (Views: 20.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:31:35 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (9.01ms)
+Completed 200 OK in 22ms (Views: 10.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:32:41 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (1.4ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (8.81ms)
+Completed 200 OK in 23ms (Views: 10.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:32:50 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (8.85ms)
+Completed 200 OK in 21ms (Views: 10.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:32:51 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.4ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.5ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (2.14ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:33:00 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (0.52ms)
+Completed 200 OK in 13ms (Views: 2.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:33:02 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.5ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (0.4ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:33:51 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (12.44ms)
+Completed 200 OK in 26ms (Views: 11.4ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:33:53 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.9ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.4ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (2.26ms)
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:34:16 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (3.76ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 3.4ms)
+
+
+  
+NoMethodError (undefined method `htu' for #<Shipment:0x007fd9d468e3d0>):
+  
+app/serializers/shipment_serializer.rb:10:in `htu'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:34:42 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (12.4ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `shipment_vehicle' for #<Shipment:0x00564e33013d30>
+Did you mean?  shipment_vehicles
+               shipment_vehicles=
+               shipment_vehicle_ids):
+  
+app/serializers/shipment_serializer.rb:10:in `shipment_vehicle'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:34:50 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.7ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (12.29ms)
+Completed 200 OK in 26ms (Views: 11.1ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:35:20 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (9.95ms)
+Completed 200 OK in 24ms (Views: 11.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:36:00 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.7ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (13.84ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `embed' for ShipmentVehicleSerializer:Class):
+  
+app/serializers/shipment_vehicle_serializer.rb:7:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/serializers/shipment_serializer.rb:11:in `block in shipment_vehicles'
+app/serializers/shipment_serializer.rb:10:in `map'
+app/serializers/shipment_serializer.rb:10:in `shipment_vehicles'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:36:16 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (12.87ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `embed' for ShipmentVehicleSerializer:Class):
+  
+app/serializers/shipment_vehicle_serializer.rb:7:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/serializers/shipment_serializer.rb:11:in `block in shipment_vehicles'
+app/serializers/shipment_serializer.rb:10:in `map'
+app/serializers/shipment_serializer.rb:10:in `shipment_vehicles'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:38:16 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (10.92ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `find' for :vehicle:Symbol):
+  
+app/serializers/shipment_vehicle_serializer.rb:6:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/serializers/shipment_serializer.rb:11:in `block in shipment_vehicles'
+app/serializers/shipment_serializer.rb:10:in `map'
+app/serializers/shipment_serializer.rb:10:in `shipment_vehicles'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:38:26 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (1.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (12.43ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.4ms)
+
+
+  
+NameError (undefined local variable or method `vehicle' for ShipmentVehicleSerializer:Class):
+  
+app/serializers/shipment_vehicle_serializer.rb:6:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/serializers/shipment_serializer.rb:11:in `block in shipment_vehicles'
+app/serializers/shipment_serializer.rb:10:in `map'
+app/serializers/shipment_serializer.rb:10:in `shipment_vehicles'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:38:33 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (11.22ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/home/wellison/API_Delivery/app/serializers/shipment_vehicle_serializer.rb:6: syntax error, unexpected ':', expecting keyword_end
+	attribute: vehicle.find(1)
+	          ^):
+  
+app/serializers/shipment_vehicle_serializer.rb:6: syntax error, unexpected ':', expecting keyword_end
+app/serializers/shipment_serializer.rb:11:in `block in shipment_vehicles'
+app/serializers/shipment_serializer.rb:10:in `map'
+app/serializers/shipment_serializer.rb:10:in `shipment_vehicles'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:38:44 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (21.71ms)
+Completed 200 OK in 37ms (Views: 20.4ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:46:00 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (59.44ms)
+Completed 200 OK in 74ms (Views: 53.4ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:46:13 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (39.46ms)
+Completed 200 OK in 56ms (Views: 40.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:47:12 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (41.65ms)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 1.3ms)
+
+
+  
+NoMethodError (undefined method `novo' for #<ShipmentVehicle:0x007fd9e8041ef0>):
+  
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:47:25 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (38.55ms)
+Completed 200 OK in 53ms (Views: 39.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:48:21 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (41.71ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `id' for #<ShipmentVehicleSerializer:0x00564e32f1fbb8>):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `novo'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:48:29 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (46.56ms)
+Completed 200 OK in 60ms (Views: 47.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:48:40 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (48.34ms)
+Completed 200 OK in 60ms (Views: 49.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:48:50 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.4ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (66.03ms)
+Completed 200 OK in 85ms (Views: 67.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:49:44 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (63.3ms)
+Completed 200 OK in 74ms (Views: 63.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:49:44 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (1.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.6ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.4ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (13.35ms)
+Completed 200 OK in 15ms (Views: 10.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:49:45 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (1.0ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (1.4ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (11.0ms)
+Completed 200 OK in 13ms (Views: 8.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:49:47 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.4ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.4ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.4ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (10.58ms)
+Completed 200 OK in 13ms (Views: 9.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:50:02 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 67], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (53.73ms)
+Completed 404 Not Found in 71ms (ActiveRecord: 18.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Vehicle with 'id'=67):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `novo'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:50:19 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.5ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (77.16ms)
+Completed 200 OK in 94ms (Views: 78.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:50:54 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (61.28ms)
+Completed 500 Internal Server Error in 78ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `Serializer' for #<Vehicle:0x007fd9d869c788>
+Did you mean?  serializable_hash):
+  
+app/serializers/shipment_vehicle_serializer.rb:8:in `novo'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:51:40 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.3ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.3ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (55.45ms)
+Completed 200 OK in 70ms (Views: 56.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:51:57 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.9ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (54.48ms)
+Completed 200 OK in 67ms (Views: 54.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:52:31 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (41.93ms)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `fetch' for :body_type:Symbol):
+  
+app/serializers/shipment_vehicle_serializer.rb:5:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:52:56 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.8ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (45.11ms)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 1.6ms)
+
+
+  
+NoMethodError (undefined method `fetch' for :body_type:Symbol):
+  
+app/serializers/shipment_vehicle_serializer.rb:5:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:53:41 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.7ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (39.57ms)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `fetch' for :t:Symbol):
+  
+app/serializers/shipment_vehicle_serializer.rb:5:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:54:01 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (51.36ms)
+Completed 200 OK in 66ms (Views: 52.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:54:39 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (46.49ms)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `fetch' for :outro:Symbol):
+  
+app/serializers/shipment_vehicle_serializer.rb:5:in `<class:ShipmentVehicleSerializer>'
+app/serializers/shipment_vehicle_serializer.rb:1:in `<top (required)>'
+app/controllers/api/shipments_controller.rb:71:in `show'
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:54:58 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (43.57ms)
+Completed 200 OK in 58ms (Views: 44.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/shipments/56" for 127.0.0.1 at 2017-10-06 07:55:12 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"56", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 56]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (55.5ms)
+Completed 200 OK in 69ms (Views: 56.6ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/api/shipments" for 127.0.0.1 at 2017-10-06 07:56:37 -0300
+Processing by Api::ShipmentsController#create as */*
+  Parameters: {"shipment"=>{"value"=>1500.0, "weight_kg"=>2000, "contact"=>{"name"=>"Wellison", "phone"=>"(11) 98268-4321"}, "vehicles"=>[{"type"=>"Carrinho", "body_type"=>"grande"}, {"type"=>"kombi", "body_type"=>"pequena"}, {"type"=>"Truck", "body_type"=>"Sider"}], "origin"=>{"city"=>"Rio Branco", "state"=>"SP", "load_at"=>"2017-09-25"}, "destination"=>{"city"=>"Goiânia", "state"=>"GO", "deliver_at"=>"2017-09-29"}}}
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (61.0ms)[0m  [1m[32mINSERT INTO "origins" ("city", "state", "load_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Rio Branco"], ["state", "SP"], ["load_at", "2017-09-25"], ["created_at", "2017-10-06 10:56:37.998031"], ["updated_at", "2017-10-06 10:56:37.998031"]]
+  [1m[35m (58.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (28.2ms)[0m  [1m[32mINSERT INTO "destinations" ("city", "state", "deliver_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["city", "Goiânia"], ["state", "GO"], ["deliver_at", "2017-09-29"], ["created_at", "2017-10-06 10:56:38.120530"], ["updated_at", "2017-10-06 10:56:38.120530"]]
+  [1m[35m (25.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (17.2ms)[0m  [1m[32mINSERT INTO "contacts" ("name", "phone", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Wellison"], ["phone", "(11) 98268-4321"], ["created_at", "2017-10-06 10:56:38.175898"], ["updated_at", "2017-10-06 10:56:38.175898"]]
+  [1m[35m (14.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (30.9ms)[0m  [1m[32mINSERT INTO "shipments" ("value", "weight_kg", "contact_id", "origin_id", "destination_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["value", 1500.0], ["weight_kg", 2000], ["contact_id", 36], ["origin_id", 85], ["destination_id", 98], ["created_at", "2017-10-06 10:56:38.209980"], ["updated_at", "2017-10-06 10:56:38.209980"]]
+  [1m[35m (10.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.2ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Carrinho"], ["body_type", "grande"], ["created_at", "2017-10-06 10:56:38.253792"], ["updated_at", "2017-10-06 10:56:38.253792"]]
+  [1m[35m (9.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (17.0ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("shipment_id", "created_at", "updated_at", "vehicle_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["shipment_id", 57], ["created_at", "2017-10-06 10:56:38.276832"], ["updated_at", "2017-10-06 10:56:38.276832"], ["vehicle_id", 32]]
+  [1m[35m (13.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "kombi"], ["body_type", "pequena"], ["created_at", "2017-10-06 10:56:38.309083"], ["updated_at", "2017-10-06 10:56:38.309083"]]
+  [1m[35m (9.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("shipment_id", "created_at", "updated_at", "vehicle_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["shipment_id", 57], ["created_at", "2017-10-06 10:56:38.320708"], ["updated_at", "2017-10-06 10:56:38.320708"], ["vehicle_id", 33]]
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "vehicles" ("vtype", "body_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vtype", "Truck"], ["body_type", "Sider"], ["created_at", "2017-10-06 10:56:38.331551"], ["updated_at", "2017-10-06 10:56:38.331551"]]
+  [1m[35m (9.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "shipment_vehicles" ("shipment_id", "created_at", "updated_at", "vehicle_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["shipment_id", 57], ["created_at", "2017-10-06 10:56:38.342905"], ["updated_at", "2017-10-06 10:56:38.342905"], ["vehicle_id", 34]]
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 372ms (Views: 14.3ms | ActiveRecord: 335.9ms)
+
+
+Started GET "/api/shipments/57" for 127.0.0.1 at 2017-10-06 07:56:50 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"57", "shipment"=>{}}
+  [1m[36mShipment Load (0.2ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 57], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 85], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.3ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 98], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 57]]
+[active_model_serializers]   [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.6ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (13.1ms)
+Completed 200 OK in 15ms (Views: 11.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/shipments/57" for 127.0.0.1 at 2017-10-06 07:57:08 -0300
+Processing by Api::ShipmentsController#show as */*
+  Parameters: {"id"=>"57", "shipment"=>{}}
+  [1m[36mShipment Load (0.3ms)[0m  [1m[34mSELECT  "shipments".* FROM "shipments" WHERE "shipments"."id" = $1 LIMIT $2[0m  [["id", 57], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mOrigin Load (0.2ms)[0m  [1m[34mSELECT  "origins".* FROM "origins" WHERE "origins"."id" = $1 LIMIT $2[0m  [["id", 85], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mDestination Load (0.2ms)[0m  [1m[34mSELECT  "destinations".* FROM "destinations" WHERE "destinations"."id" = $1 LIMIT $2[0m  [["id", 98], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mShipmentVehicle Load (0.2ms)[0m  [1m[34mSELECT "shipment_vehicles".* FROM "shipment_vehicles" WHERE "shipment_vehicles"."shipment_id" = $1[0m  [["shipment_id", 57]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mVehicle Load (0.2ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Vehicle Load (0.0ms)[0m  [1m[34mSELECT  "vehicles".* FROM "vehicles" WHERE "vehicles"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+[active_model_serializers] Rendered ShipmentSerializer with ActiveModelSerializers::Adapter::Json (45.09ms)
+Completed 200 OK in 58ms (Views: 45.4ms | ActiveRecord: 1.8ms)
+
+

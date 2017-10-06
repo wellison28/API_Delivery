@@ -20,10 +20,13 @@ def create
 											 destination: @destination)
 					if @shipment.save
 						for i in 0..(vehicles.count - 1)
-							@vehicle = ShipmentVehicle.new(shipment: @shipment,
-												   vtype: vehicles[i][:type],
+							@vehicle = Vehicle.new(vtype: vehicles[i][:type],
 												   body_type: vehicles[i][:body_type])
-							if !@vehicle.save
+							if @vehicle.save
+								@ship_veh = ShipmentVehicle.new(shipment: @shipment,
+															vehicle: @vehicle)
+								@ship_veh.save
+							else
 								@shipment.destroy
 								@contact.destroy
 								@destination.destroy

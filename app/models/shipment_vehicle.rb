@@ -1,5 +1,6 @@
 class ShipmentVehicle < ApplicationRecord
   belongs_to :shipment
+  belongs_to :vehicle
 
-  validates :body_type, :vtype, :shipment_id, presence: { message: "Obrigatorio a inclusão" }
+  validates :vehicle_id, :shipment_id, presence: { message: "Obrigatorio a inclusão" }
 end
