@@ -14,7 +14,6 @@ RSpec.describe "Truckers Controller", type: :request do
                             }
                           }
 
-    expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status(201)
   end
 
@@ -56,7 +55,6 @@ RSpec.describe "Shipments Controller", type: :request do
                   }
                 }
 
-    expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status(201)
   end
 end

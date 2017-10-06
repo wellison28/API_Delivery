@@ -2,12 +2,27 @@
 module Api
 	class TruckersController < ApplicationController
 		
-	  def create   
-	  	vehicle = trucker_params[:vehicle]
+		def vehicle
+			vehicle_params = trucker_params[:vehicle]
+			@vehicle = Vehicle.find_by(vtype: vehicle_params[:type], 
+									 body_type: vehicle_params[:body_type])
 
-	    @vehicle = Vehicle.new(vtype: vehicle[:type],
-	    					   body_type: vehicle[:body_type])
-	    if @vehicle.save
+			if !@vehicle
+				@vehicle = Vehicle.new(vtype: vehicle_params[:type],
+	    					   		   body_type: vehicle_params[:body_type])
+				if @vehicle.valid?
+
+				else
+					render json: @vehicle.errors, status: :unprocessable_entity
+					@vehicle = nil
+				end
+			end
+			@vehicle
+		end
+
+	  def create   
+	  	@vehicle = vehicle
+	    if @vehicle != nil
 			@trucker = Trucker.new(name: trucker_params[:name], 
 								   phone: trucker_params[:phone],
 								   vehicle: @vehicle)
@@ -15,11 +30,8 @@ module Api
 				render status: :created, 
 				location: [:api, @trucker]
 			else
-				@vehicle.destroy
 				render json: @trucker.errors, status: :unprocessable_entity
 			end	      
-	    else
-	      render json: @vehicle.errors, status: :unprocessable_entity
 	    end
 	  end
 
