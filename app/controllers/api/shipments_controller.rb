@@ -1,5 +1,19 @@
 module Api
 class ShipmentsController < ApplicationController
+
+def vehicle(vtype, body_type)
+	@vehicle = Vehicle.find_by(vtype: vtype, body_type: body_type)
+
+	if !@vehicle
+		@vehicle = Vehicle.new(vtype: vtype,
+					   		   body_type: body_type)
+		if !@vehicle.valid?
+			render json: @vehicle.errors, status: :unprocessable_entity
+			@vehicle = nil
+		end
+	end
+	@vehicle
+end
 			
 def create
 		origin = shipment_params[:origin]
@@ -20,11 +34,12 @@ def create
 											 destination: @destination)
 					if @shipment.save
 						for i in 0..(vehicles.count - 1)
-							@vehicle = Vehicle.new(vtype: vehicles[i][:type],
-												   body_type: vehicles[i][:body_type])
-							if @vehicle.save
+							@vehicle = vehicle(vehicles[i][:type], 
+									           vehicles[i][:body_type])
+							if @vehicle != nil
+								@vehicle.save
 								@ship_veh = ShipmentVehicle.new(shipment: @shipment,
-															vehicle: @vehicle)
+																vehicle: @vehicle)
 								@ship_veh.save
 							else
 								@shipment.destroy
@@ -37,9 +52,7 @@ def create
 						end	
 						if !erro
 							render status: :created, 
-								   location: [:api, @shipment]
-						else
-							render json:@vehicle.errors, status: :unprocessable_entity	
+								   location: [:api, @shipment]	
 						end	
 					else
 						@contact.destroy
