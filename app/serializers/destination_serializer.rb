@@ -1,5 +1,5 @@
 class DestinationSerializer < ActiveModel::Serializer
-	has_many :shipments
+  has_many :shipments
 
-    attributes :city, :state, :deliver_at
+  attributes :city, :state, :deliver_at
 end

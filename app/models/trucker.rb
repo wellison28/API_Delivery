@@ -1,11 +1,10 @@
 class Trucker < ApplicationRecord
   belongs_to :vehicle
-  
-  validates :name, 
-  			:phone,
-  			:vehicle,
-  			presence: { message: "Obrigatorio a inclusão" }
-  
+
+  validates :name,
+            :phone,
+            :vehicle,
+            presence: { message: 'Obrigatorio a inclusão' }
 
   # validates :phone, format: { with: /\((\d{2})\)(\d{4})-(\d{4})/,
   #   message: "Formato invalido - ideal: (xx)xxxx-xxxx" }

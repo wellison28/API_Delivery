@@ -10,84 +10,83 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005204150) do
-
+ActiveRecord::Schema.define(version: 20_171_005_204_150) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "api_pessoas", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'api_pessoas', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "contacts", force: :cascade do |t|
-    t.string "name"
-    t.string "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'contacts', force: :cascade do |t|
+    t.string 'name'
+    t.string 'phone'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "destinations", force: :cascade do |t|
-    t.string "city"
-    t.string "state"
-    t.date "deliver_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'destinations', force: :cascade do |t|
+    t.string 'city'
+    t.string 'state'
+    t.date 'deliver_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "origins", force: :cascade do |t|
-    t.string "city"
-    t.string "state"
-    t.date "load_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'origins', force: :cascade do |t|
+    t.string 'city'
+    t.string 'state'
+    t.date 'load_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "shipment_vehicles", force: :cascade do |t|
-    t.bigint "shipment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "vehicle_id"
-    t.index ["shipment_id"], name: "index_shipment_vehicles_on_shipment_id"
-    t.index ["vehicle_id"], name: "index_shipment_vehicles_on_vehicle_id"
+  create_table 'shipment_vehicles', force: :cascade do |t|
+    t.bigint 'shipment_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.bigint 'vehicle_id'
+    t.index ['shipment_id'], name: 'index_shipment_vehicles_on_shipment_id'
+    t.index ['vehicle_id'], name: 'index_shipment_vehicles_on_vehicle_id'
   end
 
-  create_table "shipments", force: :cascade do |t|
-    t.float "value"
-    t.integer "weight_kg"
-    t.bigint "contact_id"
-    t.bigint "origin_id"
-    t.bigint "destination_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["contact_id"], name: "index_shipments_on_contact_id"
-    t.index ["destination_id"], name: "index_shipments_on_destination_id"
-    t.index ["origin_id"], name: "index_shipments_on_origin_id"
+  create_table 'shipments', force: :cascade do |t|
+    t.float 'value'
+    t.integer 'weight_kg'
+    t.bigint 'contact_id'
+    t.bigint 'origin_id'
+    t.bigint 'destination_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['contact_id'], name: 'index_shipments_on_contact_id'
+    t.index ['destination_id'], name: 'index_shipments_on_destination_id'
+    t.index ['origin_id'], name: 'index_shipments_on_origin_id'
   end
 
-  create_table "truckers", force: :cascade do |t|
-    t.string "name"
-    t.string "phone"
-    t.string "last_city"
-    t.string "last_state"
-    t.bigint "vehicle_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["vehicle_id"], name: "index_truckers_on_vehicle_id"
+  create_table 'truckers', force: :cascade do |t|
+    t.string 'name'
+    t.string 'phone'
+    t.string 'last_city'
+    t.string 'last_state'
+    t.bigint 'vehicle_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['vehicle_id'], name: 'index_truckers_on_vehicle_id'
   end
 
-  create_table "vehicles", force: :cascade do |t|
-    t.string "vtype"
-    t.string "body_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'vehicles', force: :cascade do |t|
+    t.string 'vtype'
+    t.string 'body_type'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "shipment_vehicles", "shipments"
-  add_foreign_key "shipment_vehicles", "vehicles"
-  add_foreign_key "shipments", "contacts"
-  add_foreign_key "shipments", "destinations"
-  add_foreign_key "shipments", "origins"
-  add_foreign_key "truckers", "vehicles"
+  add_foreign_key 'shipment_vehicles', 'shipments'
+  add_foreign_key 'shipment_vehicles', 'vehicles'
+  add_foreign_key 'shipments', 'contacts'
+  add_foreign_key 'shipments', 'destinations'
+  add_foreign_key 'shipments', 'origins'
+  add_foreign_key 'truckers', 'vehicles'
 end

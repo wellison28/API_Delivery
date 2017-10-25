@@ -1,5 +1,5 @@
 class ContactSerializer < ActiveModel::Serializer
-	has_many :shipments
+  has_many :shipments
 
-    attributes :name, :phone
+  attributes :name, :phone
 end
