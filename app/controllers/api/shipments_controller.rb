@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   class ShipmentsController < ApplicationController
     def mantemVehicle(vtype, body_type)
@@ -31,7 +33,7 @@ module Api
                                      origin: @origin,
                                      destination: @destination)
             if @shipment.save
-              for i in 0..(vehicles.count - 1)
+              (0..(vehicles.count - 1)).each do |i|
                 @vehicle = mantemVehicle(vehicles[i][:type],
                                          vehicles[i][:body_type])
                 if !@vehicle.nil?
@@ -70,17 +72,17 @@ module Api
       else
         render json: @origin.errors, status: :unprocessable_entity
       end
-      end
+    end
 
     def shipment_params
       params.require(:shipment).permit!
-      end
+    end
 
     def show
       @ship = Shipment.find(params[:id])
       vehicles = Vehicle.all
       render json: @ship, content_type: 'application/json'
-      end
+    end
 
     def nearby_truckers
       @shipment = Shipment.find(params[:id])
@@ -89,12 +91,12 @@ module Api
       vehicles = ShipmentVehicle.where(shipment_id: params[:id]).select(:vehicle_id)
 
       truckers = Trucker.where(last_state: state, last_city: city, vehicle_id: vehicles[0][:vehicle_id])
-      for i in 1..(vehicles.count - 1)
+      (1..(vehicles.count - 1)).each do |i|
         aux = Trucker.where(last_state: state, last_city: city, vehicle_id: vehicles[i][:vehicle_id])
         truckers += aux
       end
 
       render json: truckers, content_type: 'application/json'
-      end
+    end
   end
 end
