@@ -2,7 +2,7 @@
 
 module Api
   class ShipmentsController < ApplicationController
-    def mantemVehicle(vtype, body_type)
+    def mantem_vehicle(vtype, body_type)
       @vehicle = Vehicle.find_by(vtype: vtype, body_type: body_type)
       unless @vehicle
         @vehicle = Vehicle.new(vtype: vtype,
@@ -21,57 +21,28 @@ module Api
       contact = shipment_params[:contact]
       vehicles = shipment_params[:vehicles]
 
-      @origin = Origin.new(origin)
-      if @origin.save
-        @destination = Destination.new(destination)
-        if @destination.save
-          @contact = Contact.new(contact)
-          if @contact.save
-            @shipment = Shipment.new(value: shipment_params[:value],
-                                     weight_kg: shipment_params[:weight_kg],
-                                     contact: @contact,
-                                     origin: @origin,
-                                     destination: @destination)
-            if @shipment.save
-              (0..(vehicles.count - 1)).each do |i|
-                @vehicle = mantemVehicle(vehicles[i][:type],
-                                         vehicles[i][:body_type])
-                if !@vehicle.nil?
-                  @vehicle.save
-                  @ship_veh = ShipmentVehicle.new(shipment: @shipment,
-                                                  vehicle: @vehicle)
-                  @ship_veh.save
-                else
-                  @shipment.destroy
-                  @contact.destroy
-                  @destination.destroy
-                  @origin.destroy
-                  erro = true
-                  break
-                end
-              end
-              unless erro
-                render status: :created,
-                       location: [:api, @shipment]
-              end
-            else
-              @contact.destroy
-              @destination.destroy
-              @origin.destroy
-              render json: @shipment.errors, status: :unprocessable_entity
-            end
-          else
-            @destination.destroy
-            @origin.destroy
-            render json: @contact.errors, status: :unprocessable_entity
-          end
-        else
-          @origin.destroy
-          render json: @destination.errors, status: :unprocessable_entity
+      ActiveRecord::Base.transaction do
+        @origin = Origin.create!(origin)
+        @destination = Destination.create!(destination)
+        @contact = Contact.create!(contact)
+        @shipment = Shipment.create!(value: shipment_params[:value], weight_kg: shipment_params[:weight_kg],
+                                     contact: @contact, origin: @origin, destination: @destination)
+
+        (0..(vehicles.count - 1)).each do |i|
+          @vehicle = mantem_vehicle(vehicles[i][:type],
+                                    vehicles[i][:body_type])
+          raise StandardError if @vehicle.nil?
+
+          @vehicle.save!
+          @ship_veh = ShipmentVehicle.new(shipment: @shipment,
+                                          vehicle: @vehicle)
+          @ship_veh.save!
         end
-      else
-        render json: @origin.errors, status: :unprocessable_entity
+      rescue StandardError => e
+        render json: e.errors, status: :unprocessable_entity
       end
+
+      render status: :created, location: [:api, @shipment]
     end
 
     def shipment_params
